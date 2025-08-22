@@ -184,20 +184,27 @@ const PanelTabItem = ({
       style={{
         display: "flex",
         alignItems: "center",
-        gap: "6px",
-        padding: "6px 12px",
+        gap: "12px",
+        padding: "4px 12px",
+        margin: "4px 2px",
         backgroundColor: isActive
-          ? Colors.ide.panel.tabActiveBackground
+          ? Colors.ide.panel.background
           : isHover
             ? Colors.ide.panel.tabHoverBackground
-            : "transparent",
+            : Colors.ide.panel.tabBackground,
         color: isActive ? Colors.ide.panel.textActive : Colors.ide.panel.text,
         fontSize: "13px",
         cursor: "pointer",
-        borderRight: `1px solid ${Colors.ide.panel.border}`,
         minWidth: "fit-content",
         whiteSpace: "nowrap",
         userSelect: "none",
+        borderRadius: "8px",
+        borderBottom: isActive
+          ? `2px solid ${Colors.ide.panel.background}`
+          : "2px solid transparent",
+        transition: "all 0.15s ease",
+        position: "relative",
+        boxShadow: isActive ? `0 -2px 4px rgba(0, 0, 0, 0.15)` : "none",
       }}
       onClick={onClick}
       onMouseEnter={() => setIsHover(true)}
