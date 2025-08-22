@@ -4,12 +4,21 @@ import { FileExplorer } from "./FileExplorer";
 import { Header } from "./Header";
 import { Panel } from "./Panel";
 import { Tab } from "./Tab";
+import { Editor } from "./Editor";
 
 export const IDEWindow = () => {
   return (
-    <div style={{ width: "100%", height: "100vh", backgroundColor: Colors.ide.background }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        width: "100%",
+        height: "100%",
+        backgroundColor: Colors.ide.background,
+      }}
+    >
       <Header title="test" />
-      <div style={{ display: "flex", flexDirection: "row", height: "calc(100vh - 35px)" }}>
+      <div style={{ display: "flex", flex: 1, flexDirection: "row" }}>
         <PrimarySideBar />
         <Pane />
         <AIPane />
@@ -40,23 +49,10 @@ const PrimarySideBar = () => {
 // 真ん中
 const Pane = () => {
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100%", flex: 1 }}>
+    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
       <div style={{ flex: 1, backgroundColor: Colors.ide.background }}>
         <Tab />
-        {/* Main editor area would go here */}
-        <div
-          style={{
-            height: "calc(100% - 35px)",
-            backgroundColor: Colors.ide.background,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "#666",
-            fontSize: "14px",
-          }}
-        >
-          Editor area
-        </div>
+        <Editor />
       </div>
       <Panel />
     </div>
