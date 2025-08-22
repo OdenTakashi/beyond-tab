@@ -101,13 +101,40 @@ export const FileExplorer = () => {
             >
               &gt;
             </span>
-            <span style={{ fontSize: "16px", color: "#c5c5c5" }}>🗂️</span>
             <span style={{ color: "#cccccc", fontWeight: "500" }}>ODENNO-KAI</span>
           </div>
 
           {/* Dropdown content */}
           {isOpen && (
             <div style={{ marginLeft: "12px", borderLeft: "1px solid #3c3c3c" }}>
+              {/* ajishimi.oden.html */}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  padding: "4px 12px",
+                  cursor: "pointer",
+                  minHeight: "22px",
+                  transition: "background-color 0.15s ease",
+                  marginLeft: "12px",
+                  borderLeft: "1px solid #3c3c3c",
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.backgroundColor = "#808080";
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.backgroundColor = "transparent";
+                }}
+                onClick={() => handleFileClick("oden.html")}
+              >
+                <img
+                  src="/src/assets/ruby.svg"
+                  alt="file"
+                  style={{ width: "16px", height: "16px" }}
+                />
+                <span style={{ color: "#cccccc" }}>ajishimi.oden</span>
+              </div>
               {/* README.md */}
               <div
                 style={{
@@ -129,33 +156,12 @@ export const FileExplorer = () => {
                 }}
                 onClick={() => handleFileClick("README.md")}
               >
-                <span style={{ fontSize: "16px", color: "#c5c5c5" }}>📄</span>
+                <img
+                  src="/src/assets/readme.svg"
+                  alt="file"
+                  style={{ width: "16px", height: "16px" }}
+                />
                 <span style={{ color: "#cccccc" }}>README.md</span>
-              </div>
-
-              {/* oden.html */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "6px",
-                  padding: "4px 12px",
-                  cursor: "pointer",
-                  minHeight: "22px",
-                  transition: "background-color 0.15s ease",
-                  marginLeft: "12px",
-                  borderLeft: "1px solid #3c3c3c",
-                }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.backgroundColor = "#808080";
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.backgroundColor = "transparent";
-                }}
-                onClick={() => handleFileClick("oden.html")}
-              >
-                <span style={{ fontSize: "16px", color: "#c5c5c5" }}>📄</span>
-                <span style={{ color: "#cccccc" }}>oden.html</span>
               </div>
             </div>
           )}
