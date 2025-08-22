@@ -97,26 +97,6 @@ export const Panel = ({
     }
   }, [isResizing, handleMouseMove, handleMouseUp]);
 
-  // キーボードショートカット（Ctrl+~）の実装
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // Ctrl+~ (Control + backtick/grave accent)
-      if (e.ctrlKey && e.key === "`" && onVisibilityChange) {
-        e.preventDefault();
-        // パネルを表示する際に、サイズが最小の場合はデフォルトサイズに戻す
-        if (!isVisible && height < 80 && onHeightChange) {
-          onHeightChange(200); // デフォルトサイズに戻す
-        }
-        onVisibilityChange(!isVisible);
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isVisible, onVisibilityChange, height, onHeightChange]);
-
   if (!isVisible) {
     return null;
   }
@@ -178,16 +158,6 @@ export const Panel = ({
           <TabControlButton
             title={isMaximized ? "最小化" : "最大化"}
             onClick={() => {
-              // パネルが非表示で最大化ボタンを押した場合、まずパネルを表示する
-              if (!isVisible && onVisibilityChange) {
-                // サイズが最小の場合はデフォルトサイズに戻す
-                if (height < 80 && onHeightChange) {
-                  onHeightChange(200);
-                }
-                onVisibilityChange(true);
-                return;
-              }
-
               setIsMaximized(!isMaximized);
               if (!isMaximized && onHeightChange) {
                 // 最大化時は利用可能な高さの80%に設定

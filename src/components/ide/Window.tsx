@@ -20,21 +20,65 @@ export const IDEWindow = () => {
     setIsPanelVisible(isVisible);
   };
 
+  // キーボードショートカット（Ctrl+~）の実装
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Ctrl+~ (Control + backtick/grave accent)
+      if (e.ctrlKey && e.key === "`") {
+        e.preventDefault();
+        // パネルを表示する際に、サイズが最小の場合はデフォルトサイズに戻す
+        if (!isPanelVisible && panelHeight < 80) {
+          setPanelHeight(200);
+        }
+        setIsPanelVisible(!isPanelVisible);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isPanelVisible, panelHeight]);
+
   return (
-    <div style={{ width: "100%", height: "100vh", backgroundColor: Colors.ide.background }}>
+    <div
+      style={{
+        width: "100%",
+        height: "100vh",
+        backgroundColor: Colors.ide.background,
+        position: "relative",
+      }}
+    >
       <Header title="test" />
       <div style={{ display: "flex", flexDirection: "row", height: "calc(100vh - 35px)" }}>
         <PrimarySideBar />
         <Pane
           panelHeight={panelHeight}
-          onPanelHeightChange={setPanelHeight}
           isPanelResizing={isPanelResizing}
-          onPanelResizeStateChange={setIsPanelResizing}
           isPanelVisible={isPanelVisible}
-          onPanelVisibilityChange={handlePanelVisibilityChange}
         />
         <AIPane />
       </div>
+      {/* パネルを絶対位置で配置 */}
+      {isPanelVisible && (
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: "250px", // PrimarySideBarの幅
+            right: "300px", // AIPaneの幅
+            zIndex: 10,
+          }}
+        >
+          <Panel
+            height={panelHeight}
+            onHeightChange={setPanelHeight}
+            onResizeStateChange={setIsPanelResizing}
+            isVisible={isPanelVisible}
+            onVisibilityChange={handlePanelVisibilityChange}
+          />
+        </div>
+      )}
     </div>
   );
 };
@@ -61,67 +105,34 @@ const PrimarySideBar = () => {
 // 真ん中
 const Pane = ({
   panelHeight,
-  onPanelHeightChange,
   isPanelResizing,
-  onPanelResizeStateChange,
   isPanelVisible,
-  onPanelVisibilityChange,
 }: {
   panelHeight: number;
-  onPanelHeightChange: (height: number) => void;
   isPanelResizing: boolean;
-  onPanelResizeStateChange: (isResizing: boolean) => void;
   isPanelVisible: boolean;
-  onPanelVisibilityChange: (isVisible: boolean) => void;
 }) => {
-  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowHeight(window.innerHeight);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const availableHeight = windowHeight - 35; // Header height
-  const effectivePanelHeight = isPanelVisible ? panelHeight : 0;
-  const editorHeight = Math.max(100, availableHeight - effectivePanelHeight); // 最小100px
+  // パネルは絶対位置で配置されるため、エディターエリアのサイズ計算は不要
 
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", flex: 1 }}>
+      <Tab />
+      {/* Main editor area would go here */}
       <div
         style={{
-          height: `${editorHeight}px`,
+          flex: 1,
           backgroundColor: Colors.ide.background,
-          overflow: "hidden",
-          transition: isPanelResizing ? "none" : "height 0.15s ease-out",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#666",
+          fontSize: "14px",
+          paddingBottom: isPanelVisible ? `${panelHeight}px` : "0px",
+          transition: isPanelResizing ? "none" : "padding-bottom 0.15s ease-out",
         }}
       >
-        <Tab />
-        {/* Main editor area would go here */}
-        <div
-          style={{
-            height: "calc(100% - 35px)",
-            backgroundColor: Colors.ide.background,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "#666",
-            fontSize: "14px",
-          }}
-        >
-          Editor area (Height: {editorHeight}px)
-        </div>
+        Editor area (Panel visible: {isPanelVisible ? "Yes" : "No"})
       </div>
-      <Panel
-        height={panelHeight}
-        onHeightChange={onPanelHeightChange}
-        onResizeStateChange={onPanelResizeStateChange}
-        isVisible={isPanelVisible}
-        onVisibilityChange={onPanelVisibilityChange}
-      />
     </div>
   );
 };
