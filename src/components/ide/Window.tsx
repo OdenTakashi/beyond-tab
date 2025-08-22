@@ -8,7 +8,7 @@ import { Tab } from "./Tab";
 export const IDEWindow = () => {
   return (
     <div style={{ width: "100%", height: "100%", backgroundColor: Colors.ide.background }}>
-      <Header />
+      <Header title="test" />
       <div style={{ display: "flex", flexDirection: "row" }}>
         <PrimarySideBar />
         <Pane />
