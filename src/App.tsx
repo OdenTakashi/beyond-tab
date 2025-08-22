@@ -1,7 +1,9 @@
+import { IDEWindow } from "./components/ide/Window";
+
 export default function App() {
   return (
     <>
-      <h1>Hello World</h1>
+      <IDEWindow />
     </>
   );
 }
