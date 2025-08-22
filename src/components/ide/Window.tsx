@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Colors } from "../../constants/Colors";
 import { Toolbar } from "./Toolbar";
 import { FileExplorer } from "./FileExplorer";
@@ -6,12 +7,20 @@ import { Panel } from "./Panel";
 import { Tab } from "./Tab";
 
 export const IDEWindow = () => {
+  const [panelHeight, setPanelHeight] = useState(200);
+  const [isPanelResizing, setIsPanelResizing] = useState(false);
+
   return (
     <div style={{ width: "100%", height: "100vh", backgroundColor: Colors.ide.background }}>
       <Header title="test" />
       <div style={{ display: "flex", flexDirection: "row", height: "calc(100vh - 35px)" }}>
         <PrimarySideBar />
-        <Pane />
+        <Pane
+          panelHeight={panelHeight}
+          onPanelHeightChange={setPanelHeight}
+          isPanelResizing={isPanelResizing}
+          onPanelResizeStateChange={setIsPanelResizing}
+        />
         <AIPane />
       </div>
     </div>
@@ -38,10 +47,41 @@ const PrimarySideBar = () => {
 };
 
 // 真ん中
-const Pane = () => {
+const Pane = ({
+  panelHeight,
+  onPanelHeightChange,
+  isPanelResizing,
+  onPanelResizeStateChange,
+}: {
+  panelHeight: number;
+  onPanelHeightChange: (height: number) => void;
+  isPanelResizing: boolean;
+  onPanelResizeStateChange: (isResizing: boolean) => void;
+}) => {
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowHeight(window.innerHeight);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const availableHeight = windowHeight - 35; // Header height
+  const editorHeight = Math.max(100, availableHeight - panelHeight); // 最小100px
+
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", flex: 1 }}>
-      <div style={{ flex: 1, backgroundColor: Colors.ide.background }}>
+      <div
+        style={{
+          height: `${editorHeight}px`,
+          backgroundColor: Colors.ide.background,
+          overflow: "hidden",
+          transition: isPanelResizing ? "none" : "height 0.15s ease-out",
+        }}
+      >
         <Tab />
         {/* Main editor area would go here */}
         <div
@@ -55,10 +95,14 @@ const Pane = () => {
             fontSize: "14px",
           }}
         >
-          Editor area
+          Editor area (Height: {editorHeight}px)
         </div>
       </div>
-      <Panel />
+      <Panel
+        height={panelHeight}
+        onHeightChange={onPanelHeightChange}
+        onResizeStateChange={onPanelResizeStateChange}
+      />
     </div>
   );
 };

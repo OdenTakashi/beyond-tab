@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { Colors } from "../../constants/Colors";
 
 interface PanelTab {
@@ -19,29 +19,99 @@ const PANEL_TABS: PanelTab[] = [
   { id: "docker", label: "docker", icon: "🐳" },
 ];
 
-export const Panel = () => {
+interface PanelProps {
+  height?: number;
+  onHeightChange?: (height: number) => void;
+  onResizeStateChange?: (isResizing: boolean) => void;
+}
+
+export const Panel = ({ height = 200, onHeightChange, onResizeStateChange }: PanelProps) => {
   const [activeTab, setActiveTab] = useState("terminal");
   const [isMaximized, setIsMaximized] = useState(false);
+  const [isResizing, setIsResizing] = useState(false);
+  const [startY, setStartY] = useState(0);
+  const [startHeight, setStartHeight] = useState(0);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseDown = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      setIsResizing(true);
+      setStartY(e.clientY);
+      setStartHeight(height);
+      if (onResizeStateChange) {
+        onResizeStateChange(true);
+      }
+    },
+    [height, onResizeStateChange]
+  );
+
+  const handleMouseMove = useCallback(
+    (e: MouseEvent) => {
+      if (!isResizing) return;
+
+      // requestAnimationFrameを使用してスムーズなリサイズを実現
+      requestAnimationFrame(() => {
+        const deltaY = startY - e.clientY; // 上に動かすと正の値
+        const newHeight = Math.max(100, Math.min(600, startHeight + deltaY)); // 最小100px、最大600px
+
+        if (onHeightChange) {
+          onHeightChange(newHeight);
+        }
+      });
+    },
+    [isResizing, startY, startHeight, onHeightChange]
+  );
+
+  const handleMouseUp = useCallback(() => {
+    setIsResizing(false);
+    if (onResizeStateChange) {
+      onResizeStateChange(false);
+    }
+  }, [onResizeStateChange]);
+
+  useEffect(() => {
+    if (isResizing) {
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
+      document.body.style.cursor = "ns-resize";
+      document.body.style.userSelect = "none";
+
+      return () => {
+        document.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseup", handleMouseUp);
+        document.body.style.cursor = "";
+        document.body.style.userSelect = "";
+      };
+    }
+  }, [isResizing, handleMouseMove, handleMouseUp]);
 
   return (
     <div
+      ref={panelRef}
       style={{
         display: "flex",
         flexDirection: "column",
         backgroundColor: Colors.ide.panel.background,
         borderTop: `1px solid ${Colors.ide.panel.border}`,
-        height: isMaximized ? "100%" : "200px",
-        minHeight: "150px",
+        height: isMaximized ? "100%" : `${height}px`,
+        minHeight: "100px",
+        maxHeight: "600px",
+        transition: isResizing ? "none" : "height 0.15s ease-out",
       }}
     >
       {/* Resize Handle */}
       <div
         style={{
           height: "4px",
-          backgroundColor: Colors.ide.panel.background,
+          backgroundColor: isResizing
+            ? Colors.ide.panel.tabHoverBackground
+            : Colors.ide.panel.background,
           cursor: "ns-resize",
           borderBottom: `1px solid ${Colors.ide.panel.border}`,
+          transition: isResizing ? "none" : "background-color 0.2s ease",
         }}
+        onMouseDown={handleMouseDown}
       />
 
       {/* Tab Bar */}
@@ -72,7 +142,17 @@ export const Panel = () => {
           <TabControlButton title="設定">⋯</TabControlButton>
           <TabControlButton
             title={isMaximized ? "最小化" : "最大化"}
-            onClick={() => setIsMaximized(!isMaximized)}
+            onClick={() => {
+              setIsMaximized(!isMaximized);
+              if (!isMaximized && onHeightChange) {
+                // 最大化時は利用可能な高さの80%に設定
+                const maxHeight = Math.min(600, (window.innerHeight - 35) * 0.8);
+                onHeightChange(maxHeight);
+              } else if (isMaximized && onHeightChange) {
+                // 最小化時は200pxに戻す
+                onHeightChange(200);
+              }
+            }}
           >
             {isMaximized ? "▼" : "▲"}
           </TabControlButton>
