@@ -41,7 +41,7 @@ const PrimarySideBar = () => {
     <div
       style={{
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "row",
         height: "100%",
         width: "100%",
         borderRight: `1px solid #3e3e42`,
