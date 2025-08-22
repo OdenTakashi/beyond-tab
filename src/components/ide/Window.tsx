@@ -9,6 +9,16 @@ import { Tab } from "./Tab";
 export const IDEWindow = () => {
   const [panelHeight, setPanelHeight] = useState(200);
   const [isPanelResizing, setIsPanelResizing] = useState(false);
+  const [isPanelVisible, setIsPanelVisible] = useState(true);
+
+  // パネルの表示状態を変更する際のハンドラー
+  const handlePanelVisibilityChange = (isVisible: boolean) => {
+    // パネルを表示する際に、サイズが最小の場合はデフォルトサイズに戻す
+    if (isVisible && panelHeight < 80) {
+      setPanelHeight(200);
+    }
+    setIsPanelVisible(isVisible);
+  };
 
   return (
     <div style={{ width: "100%", height: "100vh", backgroundColor: Colors.ide.background }}>
@@ -20,6 +30,8 @@ export const IDEWindow = () => {
           onPanelHeightChange={setPanelHeight}
           isPanelResizing={isPanelResizing}
           onPanelResizeStateChange={setIsPanelResizing}
+          isPanelVisible={isPanelVisible}
+          onPanelVisibilityChange={handlePanelVisibilityChange}
         />
         <AIPane />
       </div>
@@ -52,11 +64,15 @@ const Pane = ({
   onPanelHeightChange,
   isPanelResizing,
   onPanelResizeStateChange,
+  isPanelVisible,
+  onPanelVisibilityChange,
 }: {
   panelHeight: number;
   onPanelHeightChange: (height: number) => void;
   isPanelResizing: boolean;
   onPanelResizeStateChange: (isResizing: boolean) => void;
+  isPanelVisible: boolean;
+  onPanelVisibilityChange: (isVisible: boolean) => void;
 }) => {
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 
@@ -70,7 +86,8 @@ const Pane = ({
   }, []);
 
   const availableHeight = windowHeight - 35; // Header height
-  const editorHeight = Math.max(100, availableHeight - panelHeight); // 最小100px
+  const effectivePanelHeight = isPanelVisible ? panelHeight : 0;
+  const editorHeight = Math.max(100, availableHeight - effectivePanelHeight); // 最小100px
 
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", flex: 1 }}>
@@ -102,6 +119,8 @@ const Pane = ({
         height={panelHeight}
         onHeightChange={onPanelHeightChange}
         onResizeStateChange={onPanelResizeStateChange}
+        isVisible={isPanelVisible}
+        onVisibilityChange={onPanelVisibilityChange}
       />
     </div>
   );

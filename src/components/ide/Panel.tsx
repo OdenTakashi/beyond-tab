@@ -23,9 +23,17 @@ interface PanelProps {
   height?: number;
   onHeightChange?: (height: number) => void;
   onResizeStateChange?: (isResizing: boolean) => void;
+  isVisible?: boolean;
+  onVisibilityChange?: (isVisible: boolean) => void;
 }
 
-export const Panel = ({ height = 200, onHeightChange, onResizeStateChange }: PanelProps) => {
+export const Panel = ({
+  height = 200,
+  onHeightChange,
+  onResizeStateChange,
+  isVisible = true,
+  onVisibilityChange,
+}: PanelProps) => {
   const [activeTab, setActiveTab] = useState("terminal");
   const [isMaximized, setIsMaximized] = useState(false);
   const [isResizing, setIsResizing] = useState(false);
@@ -53,14 +61,17 @@ export const Panel = ({ height = 200, onHeightChange, onResizeStateChange }: Pan
       // requestAnimationFrameを使用してスムーズなリサイズを実現
       requestAnimationFrame(() => {
         const deltaY = startY - e.clientY; // 上に動かすと正の値
-        const newHeight = Math.max(100, Math.min(600, startHeight + deltaY)); // 最小100px、最大600px
+        const newHeight = Math.max(50, Math.min(600, startHeight + deltaY)); // 最小50px、最大600px
 
-        if (onHeightChange) {
+        // 最小サイズ（80px）以下になった場合は非表示にする
+        if (newHeight < 80 && onVisibilityChange) {
+          onVisibilityChange(false);
+        } else if (onHeightChange) {
           onHeightChange(newHeight);
         }
       });
     },
-    [isResizing, startY, startHeight, onHeightChange]
+    [isResizing, startY, startHeight, onHeightChange, onVisibilityChange]
   );
 
   const handleMouseUp = useCallback(() => {
@@ -85,6 +96,30 @@ export const Panel = ({ height = 200, onHeightChange, onResizeStateChange }: Pan
       };
     }
   }, [isResizing, handleMouseMove, handleMouseUp]);
+
+  // キーボードショートカット（Ctrl+~）の実装
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Ctrl+~ (Control + backtick/grave accent)
+      if (e.ctrlKey && e.key === "`" && onVisibilityChange) {
+        e.preventDefault();
+        // パネルを表示する際に、サイズが最小の場合はデフォルトサイズに戻す
+        if (!isVisible && height < 80 && onHeightChange) {
+          onHeightChange(200); // デフォルトサイズに戻す
+        }
+        onVisibilityChange(!isVisible);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isVisible, onVisibilityChange, height, onHeightChange]);
+
+  if (!isVisible) {
+    return null;
+  }
 
   return (
     <div
@@ -143,6 +178,16 @@ export const Panel = ({ height = 200, onHeightChange, onResizeStateChange }: Pan
           <TabControlButton
             title={isMaximized ? "最小化" : "最大化"}
             onClick={() => {
+              // パネルが非表示で最大化ボタンを押した場合、まずパネルを表示する
+              if (!isVisible && onVisibilityChange) {
+                // サイズが最小の場合はデフォルトサイズに戻す
+                if (height < 80 && onHeightChange) {
+                  onHeightChange(200);
+                }
+                onVisibilityChange(true);
+                return;
+              }
+
               setIsMaximized(!isMaximized);
               if (!isMaximized && onHeightChange) {
                 // 最大化時は利用可能な高さの80%に設定
@@ -156,7 +201,16 @@ export const Panel = ({ height = 200, onHeightChange, onResizeStateChange }: Pan
           >
             {isMaximized ? "▼" : "▲"}
           </TabControlButton>
-          <TabControlButton title="閉じる">×</TabControlButton>
+          <TabControlButton
+            title="閉じる"
+            onClick={() => {
+              if (onVisibilityChange) {
+                onVisibilityChange(false);
+              }
+            }}
+          >
+            ×
+          </TabControlButton>
         </div>
       </div>
 
