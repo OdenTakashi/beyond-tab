@@ -4,6 +4,7 @@ import { FileExplorer } from "./FileExplorer";
 import { Header } from "./Header";
 import { Panel } from "./Panel";
 import { Tab } from "./Tab";
+import { AIPanel } from "./AIPanel";
 
 export const IDEWindow = () => {
   return (
@@ -12,7 +13,7 @@ export const IDEWindow = () => {
       <div style={{ display: "flex", flexDirection: "row" }}>
         <PrimarySideBar />
         <Pane />
-        <AIPane />
+        <AIPanel />
       </div>
     </div>
   );
@@ -36,9 +37,4 @@ const Pane = () => {
       <Panel />
     </div>
   );
-};
-
-// 右側：AIとチャットできるところ
-const AIPane = () => {
-  return <div>AIPane</div>;
 };
