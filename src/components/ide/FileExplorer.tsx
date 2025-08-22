@@ -107,7 +107,7 @@ export const FileExplorer = () => {
           {/* Dropdown content */}
           {isOpen && (
             <div style={{ marginLeft: "12px", borderLeft: "1px solid #3c3c3c" }}>
-              {/* ajishimi.oden.html */}
+              {/* daikon.oden.html */}
               <div
                 style={{
                   display: "flex",
@@ -133,7 +133,7 @@ export const FileExplorer = () => {
                   alt="file"
                   style={{ width: "16px", height: "16px" }}
                 />
-                <span style={{ color: "#cccccc" }}>ajishimi.oden</span>
+                <span style={{ color: "#cccccc" }}>daikon.oden</span>
               </div>
               {/* README.md */}
               <div
