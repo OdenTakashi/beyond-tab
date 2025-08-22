@@ -5,6 +5,7 @@ import { Header } from "./Header";
 import { Panel } from "./Panel";
 import { Tab } from "./Tab";
 import { Editor } from "./Editor";
+import { AIPanel } from "./AIPanel";
 
 export const IDEWindow = () => {
   return (
@@ -75,7 +76,7 @@ const AIPane = () => {
         fontSize: "14px",
       }}
     >
-      AI Pane
+      <AIPanel />
     </div>
   );
 };
