@@ -81,8 +81,8 @@ export const FileExplorer = () => {
               color: "#c5c5c5",
               transform: isOpen ? "rotate(90deg)" : "rotate(0deg)",
               transition: "transform 0.2s ease"
-            }}>▶</span>
-            <span style={{ fontSize: "16px", color: "#c5c5c5" }}>��</span>
+            }}>&gt;</span>
+            <span style={{ fontSize: "16px", color: "#c5c5c5" }}>🗂️</span>
             <span style={{ color: "#cccccc", fontWeight: "500" }}>ODENNO-KAI</span>
           </div>
           
