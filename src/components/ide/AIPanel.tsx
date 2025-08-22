@@ -66,7 +66,7 @@ export const AIPanel = () => {
         display: "flex",
         flexDirection: "column",
         height: "100%",
-        width: "300px",
+        width: "100%",
         backgroundColor: "#1e1e1e",
         borderLeft: `1px solid #2d2d30`,
         overflow: "hidden",

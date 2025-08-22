@@ -20,26 +20,29 @@ export const IDEWindow = () => {
     >
       <Header title="test" />
       <div style={{ display: "flex", flex: 1, flexDirection: "row", width: "100%" }}>
-        <PrimarySideBar width={250} />
-        <div style={{ flex: 1 }}>
+        <div style={{ width: 250 }}>
+          <PrimarySideBar />
+        </div>
+        <div style={{ flex: 1, overflow: "hidden" }}>
           <Pane />
         </div>
-        <AIPane width={300} />
+        <div style={{ width: 300 }}>
+          <AIPane />
+        </div>
       </div>
     </div>
   );
 };
 
 // ツールバーとかファイル一覧があるところ
-const PrimarySideBar = ({ width }: { width: number }) => {
+const PrimarySideBar = () => {
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "column",
         height: "100%",
-        width,
-        backgroundColor: Colors.ide.background,
+        width: "100%",
         borderRight: `1px solid #3e3e42`,
       }}
     >
@@ -52,7 +55,14 @@ const PrimarySideBar = ({ width }: { width: number }) => {
 // 真ん中
 const Pane = () => {
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        width: "100%",
+        height: "100%",
+      }}
+    >
       <div style={{ flex: 1, backgroundColor: Colors.ide.background }}>
         <Tab />
         <Editor />
@@ -63,13 +73,13 @@ const Pane = () => {
 };
 
 // 右側：AIとチャットできるところ
-const AIPane = ({ width }: { width: number }) => {
+const AIPane = () => {
   return (
     <div
       style={{
-        width,
         height: "100%",
-        backgroundColor: Colors.ide.background,
+        // backgroundColor: Colors.ide.background,
+        backgroundColor: "red",
         borderLeft: `1px solid #3e3e42`,
         display: "flex",
         alignItems: "center",
