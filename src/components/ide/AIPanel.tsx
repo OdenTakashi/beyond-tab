@@ -251,8 +251,8 @@ export const AIPanel = () => {
                   resize: "none",
                   lineHeight: "1.4",
                 }}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' && !e.shiftKey) {
+                onKeyDown={e => {
+                  if (e.key === "Enter" && !e.shiftKey) {
                     e.preventDefault();
                     handleSubmit(e);
                   }
