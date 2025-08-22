@@ -19,9 +19,11 @@ export const IDEWindow = () => {
       }}
     >
       <Header title="test" />
-      <div style={{ display: "flex", flex: 1, flexDirection: "row" }}>
+      <div style={{ display: "flex", flex: 1, flexDirection: "row", width: "100%" }}>
         <PrimarySideBar width={250} />
-        <Pane />
+        <div style={{ flex: 1 }}>
+          <Pane />
+        </div>
         <AIPane width={300} />
       </div>
     </div>
