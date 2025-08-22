@@ -101,7 +101,6 @@ export const FileExplorer = () => {
             >
               &gt;
             </span>
-            <span style={{ fontSize: "16px", color: "#c5c5c5" }}>🗂️</span>
             <span style={{ color: "#cccccc", fontWeight: "500" }}>ODENNO-KAI</span>
           </div>
 
@@ -129,7 +128,7 @@ export const FileExplorer = () => {
                 }}
                 onClick={() => handleFileClick("README.md")}
               >
-                <span style={{ fontSize: "16px", color: "#c5c5c5" }}>📄</span>
+                <img src="/src/assets/readme.svg" alt="file" style={{ width: "16px", height: "16px" }} />
                 <span style={{ color: "#cccccc" }}>README.md</span>
               </div>
 
@@ -154,8 +153,8 @@ export const FileExplorer = () => {
                 }}
                 onClick={() => handleFileClick("oden.html")}
               >
-                <span style={{ fontSize: "16px", color: "#c5c5c5" }}>📄</span>
-                <span style={{ color: "#cccccc" }}>oden.html</span>
+                <img src="/src/assets/ruby.svg" alt="file" style={{ width: "16px", height: "16px" }} />
+                <span style={{ color: "#cccccc" }}>ajishimi.oden</span>
               </div>
             </div>
           )}
