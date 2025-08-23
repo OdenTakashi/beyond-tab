@@ -413,8 +413,11 @@ export const SimpleTerminal = ({ terminalValue }: { terminalValue?: TerminalValu
       case "oden":
         if (value.includes("#=>")) {
           return "#36f3a1";
+        } else if (value.includes("僕達はどこに向かっているんだろう")) {
+          return "#f14c4c";
+        } else {
+          return "#29a3d3";
         }
-        return "#29a3d3";
       case "output":
       default:
         return Colors.ide.panel.text;
