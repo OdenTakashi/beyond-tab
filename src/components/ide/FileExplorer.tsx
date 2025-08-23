@@ -12,10 +12,20 @@ export const FileExplorer = ({ onFileSelect }: FileExplorerProps) => {
   const handleFileClick = (fileName: string) => {
     console.log(`File clicked: ${fileName}`);
     
-    // ファイルが既に選択されている場合は削除、そうでなければ追加
-    const newSelectedFiles = selectedFiles.includes(fileName)
-      ? selectedFiles.filter(file => file !== fileName)
-      : [...selectedFiles, fileName];
+    // ファイルが既に選択されている場合は、既存の選択を維持
+    // 新しく選択されていない場合のみ追加
+    let newSelectedFiles: string[];
+    
+    if (selectedFiles.includes(fileName)) {
+      // 既に選択されている場合は、そのファイルを最後に移動（アクティブにする）
+      newSelectedFiles = [
+        ...selectedFiles.filter(file => file !== fileName),
+        fileName
+      ];
+    } else {
+      // 新しく選択されていない場合は追加
+      newSelectedFiles = [...selectedFiles, fileName];
+    }
     
     setSelectedFiles(newSelectedFiles);
     console.log("Selected files:", newSelectedFiles);
