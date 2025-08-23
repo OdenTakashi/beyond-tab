@@ -1,4 +1,6 @@
 import { useState } from "react";
+import readmeSVG from "/src/assets/readme.svg";
+import rubyrSVG from "../../assets/ruby.svg";
 
 interface TabProps {
   selectedFiles?: string[];
@@ -20,7 +22,7 @@ export const Tab = ({ selectedFiles = [], onTabClose, onTabClick }: TabProps) =>
     if (fileName.endsWith(".md")) {
       icon = (
         <img
-          src="/src/assets/readme.svg"
+          src={readmeSVG}
           alt="readme"
           style={{
             width: "16px",
@@ -33,7 +35,7 @@ export const Tab = ({ selectedFiles = [], onTabClose, onTabClick }: TabProps) =>
     } else if (fileName.endsWith(".oden")) {
       icon = (
         <img
-          src="/src/assets/ruby.svg"
+          src={rubyrSVG}
           alt="ruby"
           style={{
             width: "16px",
