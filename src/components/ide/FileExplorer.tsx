@@ -1,15 +1,8 @@
 import { useState } from "react";
+import { FileData } from "./FileData";
 
 export const FileExplorer = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const handleFileClick = (fileName: string) => {
-    if (fileName === "README.md") {
-      console.log("hello1");
-    } else if (fileName === "oden.html") {
-      console.log("hello2");
-    }
-  };
 
   const toggleFolder = () => {
     setIsOpen(!isOpen);
@@ -107,62 +100,35 @@ export const FileExplorer = () => {
           {/* Dropdown content */}
           {isOpen && (
             <div style={{ marginLeft: "12px", borderLeft: "1px solid #3c3c3c" }}>
-              {/* daikon.oden.html */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "6px",
-                  padding: "4px 12px",
-                  cursor: "pointer",
-                  minHeight: "22px",
-                  transition: "background-color 0.15s ease",
-                  marginLeft: "12px",
-                  borderLeft: "1px solid #3c3c3c",
-                }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.backgroundColor = "#808080";
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.backgroundColor = "transparent";
-                }}
-                onClick={() => handleFileClick("oden.html")}
+              {/* controllers folder */}
+              <FileData
+                fileName="controllers"
+                isFolder={true}
+                iconImage="/src/assets/folder-controller.svg"
               >
-                <img
-                  src="/src/assets/ruby.svg"
-                  alt="file"
-                  style={{ width: "16px", height: "16px" }}
-                />
-                <span style={{ color: "#cccccc" }}>daikon.oden</span>
-              </div>
+                <FileData fileName="daikon.oden" iconImage="/src/assets/ruby.svg" />
+                <FileData fileName="konbu.oden" iconImage="/src/assets/ruby.svg" />
+                <FileData fileName="chikuwabu.oden" iconImage="/src/assets/ruby.svg" />
+                <FileData fileName="tamago.oden" iconImage="/src/assets/ruby.svg" />
+                <FileData fileName="tanpen.oden" iconImage="/src/assets/ruby.svg" />
+                <FileData fileName="konnyaku.oden" iconImage="/src/assets/ruby.svg" />
+                <FileData fileName="chikuwa.oden" iconImage="/src/assets/ruby.svg" />
+              </FileData>
+
+              {/* models folder */}
+              <FileData fileName="models" isFolder={true} iconImage="/src/assets/folder-model.svg">
+                <FileData fileName="user.oden" iconImage="/src/assets/ruby.svg" />
+                <FileData fileName="post.oden" iconImage="/src/assets/ruby.svg" />
+              </FileData>
+
+              {/* views folder */}
+              <FileData fileName="views" isFolder={true} iconImage="/src/assets/folder-view.svg">
+                <FileData fileName="index.oden" iconImage="/src/assets/ruby.svg" />
+                <FileData fileName="show.oden" iconImage="/src/assets/ruby.svg" />
+              </FileData>
+
               {/* README.md */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "6px",
-                  padding: "4px 12px",
-                  cursor: "pointer",
-                  minHeight: "22px",
-                  transition: "background-color 0.15s ease",
-                  marginLeft: "12px",
-                  borderLeft: "1px solid #3c3c3c",
-                }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.backgroundColor = "#808080";
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.backgroundColor = "transparent";
-                }}
-                onClick={() => handleFileClick("README.md")}
-              >
-                <img
-                  src="/src/assets/readme.svg"
-                  alt="file"
-                  style={{ width: "16px", height: "16px" }}
-                />
-                <span style={{ color: "#cccccc" }}>README.md</span>
-              </div>
+              <FileData fileName="README.md" iconImage="/src/assets/readme.svg" />
             </div>
           )}
         </div>
