@@ -98,14 +98,14 @@ export default {
     {
       value: (
         <>
-          <Token value="# 遊び方" isSuggestion />
+          <Token value="# 遊び方" />
         </>
       ),
     },
     {
       value: (
         <>
-          <Token value="1. Tabを叩いてコーティングする" isSuggestion />
+          <Token value="1. Tabを叩いてコーティングする" />
         </>
       ),
     },
@@ -114,10 +114,52 @@ export default {
         <>
           <Token
             value="controller/daikon.oden ファイルを開いてください。このファイルは、あなたのTabキー連打をただひたすらに待っています。あとは、指が筋肉痛になるまでTabキーを叩きまくってください。"
+          />
+        </>
+      ),
+    },
+    {
+      value: <></>,
+    },
+    {
+      value: (
+        <>
+          <Token value="2. コードの真髄に触れる" isSuggestion />
+        </>
+      ),
+    },
+    {
+      value: (
+        <>
+          <Token
+            value="一行、また一行とコードが生成されるたびに、あなたは「自分は何をしているのだろう？」という哲学的な問いに直面します。"
             isSuggestion
           />
         </>
       ),
+    },
+    {
+      value: (
+        <>
+          <Token
+            value="そこに論理的な意味はありません。ただ、コードがそこに生まれる。"
+            isSuggestion
+          />
+        </>
+      ),
+    },
+    {
+      value: (
+        <>
+          <Token
+            value="これこそが、このアプリが提示する「プログラミングの真髄」です。"
+            isSuggestion
+          />
+        </>
+      ),
+    },
+    {
+      value: <></>,
     },
     
   ],

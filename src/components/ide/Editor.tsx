@@ -1,8 +1,8 @@
 import sceneReadme01 from "../../scenes/readme_01";
 import sceneReadme02 from "../../scenes/readme_02";
 import sceneReadme03 from "../../scenes/readme_03";
-import sceneReadme04 from "../../scenes/readme_04";
-import sceneReadme05 from "../../scenes/readme_05";
+import sceneReadme04 from "../../scenes/readme_07";
+import sceneReadme05 from "../../scenes/readme_07";
 import { scene01 } from "../../scenes/daikon_01";
 import { scene02 } from "../../scenes/daikon_02";
 import { useState } from "react";

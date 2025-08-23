@@ -98,14 +98,14 @@ export default {
     {
       value: (
         <>
-          <Token value="# 遊び方" isSuggestion />
+          <Token value="# 遊び方" />
         </>
       ),
     },
     {
       value: (
         <>
-          <Token value="1. Tabを叩いてコーティングする" isSuggestion />
+          <Token value="1. Tabを叩いてコーティングする" />
         </>
       ),
     },
@@ -114,11 +114,78 @@ export default {
         <>
           <Token
             value="controller/daikon.oden ファイルを開いてください。このファイルは、あなたのTabキー連打をただひたすらに待っています。あとは、指が筋肉痛になるまでTabキーを叩きまくってください。"
+          />
+        </>
+      ),
+    },
+    {
+      value: <></>,
+    },
+    {
+      value: (
+        <>
+          <Token value="2. コードの真髄に触れる"  />
+        </>
+      ),
+    },
+    {
+      value: (
+        <>
+          <Token
+            value="一行、また一行とコードが生成されるたびに、あなたは「自分は何をしているのだろう？」という哲学的な問いに直面します。"
+            
+          />
+        </>
+      ),
+    },
+    {
+      value: (
+        <>
+          <Token
+            value="そこに論理的な意味はありません。ただ、コードがそこに生まれる。"
+            
+          />
+        </>
+      ),
+    },
+    {
+      value: (
+        <>
+          <Token
+            value="これこそが、このアプリが提示する「プログラミングの真髄」です。"
+          />
+        </>
+      ),
+    },
+    {
+      value: <></>,
+    },
+    {
+      value: (
+        <>
+          <Token value="3. 虚無になる" isSuggestion />
+        </>
+      ),
+    },
+    {
+      value: (
+        <>
+          <Token
+            value="すべてを終えたとき、あなたは達成感と同時に、なんとも言えない虚無感に襲われます。"
             isSuggestion
           />
         </>
       ),
     },
-    
+    {
+      value: (
+        <>
+          <Token
+            value="この虚無感こそが、あなたのプログラミング人生に新たなブレイクスルーをもたらすかもしれません。"
+            isSuggestion
+          />
+        </>
+      ),
+    },
   ],
 } as SceneType;

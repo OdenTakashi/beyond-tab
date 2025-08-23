@@ -12,7 +12,11 @@ import sceneReadme01 from "../../scenes/readme_01";
 import sceneReadme02 from "../../scenes/readme_02";
 import sceneReadme03 from "../../scenes/readme_03";
 import sceneReadme04 from "../../scenes/readme_04";
-import sceneReadme05 from "../../scenes/readme_05";
+import sceneReadme05 from "../../scenes/readme_05"
+import sceneReadme06 from "../../scenes/readme_06";
+import sceneReadme07 from "../../scenes/readme_07";
+import sceneReadme08 from "../../scenes/readme_08";
+import sceneReadme09 from "../../scenes/readme_09";
 import { scene01 } from "../../scenes/daikon_01";
 import { scene02 } from "../../scenes/daikon_02";
 import nanimonodemonai from "../../scenes/nanimonodemonai";
@@ -25,12 +29,16 @@ const scenes: SceneType[] = [
   sceneReadme03,
   sceneReadme04,
   sceneReadme05,
+  sceneReadme06,
+  sceneReadme07,
+  sceneReadme08,
+  sceneReadme09,
   scene01,
   scene02,
 ];
 
 // ファイルタイプ別のシーン配列を定義
-const README_SCENES = [sceneReadme01, sceneReadme02, sceneReadme03, sceneReadme04, sceneReadme05];
+const README_SCENES = [sceneReadme01, sceneReadme02, sceneReadme03, sceneReadme04, sceneReadme05,sceneReadme06,sceneReadme07,sceneReadme08,sceneReadme09];
 const ODEN_SCENES = [scene01, scene02];
 
 export const IDEWindow = () => {
