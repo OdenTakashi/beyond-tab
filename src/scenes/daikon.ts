@@ -17,7 +17,9 @@ import editor08_fix from "./editor/daikon_08_fix";
 import editor09 from "./editor/daikon_09";
 import editor09_fix from "./editor/daikon_09_fix";
 import editor11 from "./editor/daikon_11";
+import editor11_fix from "./editor/daikon_11_fix";
 import editor12 from "./editor/daikon_12";
+import editor12_fix from "./editor/daikon_12_fix";
 import editor13 from "./editor/daikon_13";
 import editor14 from "./editor/daikon_14";
 import terminal01 from "./terminal/terminal_01";
@@ -41,7 +43,9 @@ import terminal18 from "./terminal/terminal_18";
 import terminal19 from "./terminal/terminal_19";
 import terminal20 from "./terminal/terminal_20";
 import terminal21 from "./terminal/terminal_21";
-import ai00 from "./ai/ai_00";
+import ai01 from "./ai/ai_01";
+import ai02 from "./ai/ai_02";
+import ai03 from "./ai/ai_03";
 
 export default [
   // ユーザを作る
@@ -77,6 +81,11 @@ export default [
   {
     editor: editor03_fix,
     terminal: terminal02,
+    opacity: 0,
+  },
+  {
+    editor: editor03_fix,
+    terminal: terminal03,
     opacity: 0,
   },
   // cry を定義
@@ -213,15 +222,59 @@ export default [
     terminal: terminal18,
     opacity: 0.6,
   },
+  // chat: 感情を削除する
+  {
+    editor: editor09_fix,
+    ai: ai01,
+    opacity: 0.6,
+  },
+  // terminal: 感情を削除する
+  {
+    editor: editor09_fix,
+    terminal: terminal19,
+    opacity: 0.7,
+  },
   // Emotion が消える
   {
     editor: editor11,
+    opacity: 0.7,
+  },
+  {
+    editor: editor11_fix,
+    opacity: 0.7,
+  },
+  // ai: 行動が削除される
+  {
+    editor: editor11_fix,
+    ai: ai02,
+    opacity: 0.7,
+  },
+  // terminal: 行動が削除される
+  {
+    editor: editor11_fix,
+    terminal: terminal20,
     opacity: 0.7,
   },
   // Action が消える
   {
     editor: editor12,
     opacity: 0.8,
+  },
+  {
+    editor: editor12_fix,
+    opacity: 0.8,
+  },
+  // ai: ユーザーが消える
+  {
+    editor: editor12_fix,
+    ai: ai03,
+    opacity: 0.7,
+  },
+  // terminal: ユーザーが消える
+  {
+    editor: editor12_fix,
+    terminal: terminal21,
+    opacity: 0.7,
   },
   // User が消える
   {
