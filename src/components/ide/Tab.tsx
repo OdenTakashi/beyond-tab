@@ -17,7 +17,7 @@ export const Tab = () => {
       icon: "⚛️", // Reactアイコン
       isActive: false,
       isModified: false,
-      isCloseable: true,
+      isCloseable: false,
     },
     {
       id: "2",
@@ -164,7 +164,14 @@ export const Tab = () => {
             e.currentTarget.style.backgroundColor = "transparent";
           }}
         >
-          🔀
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="5" cy="6" r="3"/>
+            <path d="M12 6h5a2 2 0 0 1 2 2v7"/>
+            <path d="m15 9-3-3 3-3"/>
+            <circle cx="19" cy="18" r="3"/>
+            <path d="M12 18H7a2 2 0 0 1-2-2V9"/>
+            <path d="m9 15 3 3-3 3"/>
+          </svg>
         </button>
 
         {/* エディタ分割アイコン */}
@@ -191,7 +198,10 @@ export const Tab = () => {
             e.currentTarget.style.backgroundColor = "transparent";
           }}
         >
-          ⊞
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect width="18" height="18" x="3" y="3" rx="2"/>
+            <path d="M12 3v18"/>
+          </svg>
         </button>
 
         {/* その他のオプション */}
