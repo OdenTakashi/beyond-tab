@@ -2,7 +2,7 @@ import { Token } from "../components/ide/Token";
 import type { SceneType } from "../types/Scene";
 
 export default {
-  lines: [
+  editor: [
     {
       value: (
         <>

@@ -42,7 +42,7 @@ export const Editor = () => {
       tabIndex={0} // キーボードイベントを受け取れるようにする
       onKeyDown={handleKeyDown}
     >
-      {scenes[sceneIndex].lines.map((line, index) => (
+      {scenes[sceneIndex].editor.map((line, index) => (
         <div key={index} style={{ display: "flex", flexDirection: "row", gap: 4 }}>
           <Number rowNumber={index + 1} />
           <div style={{ display: "flex", flexDirection: "row", gap: 4 }}>{line.value}</div>
