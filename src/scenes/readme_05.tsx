@@ -1,7 +1,7 @@
 import { Token } from "../components/ide/Token";
 import type { SceneType } from "../types/Scene";
 
-export const sceneReadme: SceneType = {
+export default {
   lines: [
     {
       value: (
@@ -189,4 +189,4 @@ export const sceneReadme: SceneType = {
       ),
     },
   ],
-};
+} as SceneType;

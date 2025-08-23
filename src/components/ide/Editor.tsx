@@ -1,10 +1,22 @@
-import { sceneReadme } from "../../scenes/readme";
+import sceneReadme01 from "../../scenes/readme_01";
+import sceneReadme02 from "../../scenes/readme_02";
+import sceneReadme03 from "../../scenes/readme_03";
+import sceneReadme04 from "../../scenes/readme_04";
+import sceneReadme05 from "../../scenes/readme_05";
 import { scene01 } from "../../scenes/01";
 import { scene02 } from "../../scenes/02";
 import { useState } from "react";
 import type { SceneType } from "../../types/Scene";
 
-const scenes: SceneType[] = [sceneReadme, scene01, scene02];
+const scenes: SceneType[] = [
+  sceneReadme01,
+  sceneReadme02,
+  sceneReadme03,
+  sceneReadme04,
+  sceneReadme05,
+  scene01,
+  scene02,
+];
 
 export const Editor = () => {
   const [sceneIndex, setSceneIndex] = useState(0);
