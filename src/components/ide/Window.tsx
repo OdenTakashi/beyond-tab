@@ -172,7 +172,7 @@ export const IDEWindow = () => {
         </div>
         <div style={{ flex: 1, overflow: "hidden" }}>
           <Pane
-            scene={scene}
+            scene={getEditorContent()}
             editorContent={getEditorContent().editor}
             panelHeight={panelHeight}
             onPanelHeightChange={setPanelHeight}
@@ -302,6 +302,7 @@ const Pane = ({
         </div>
       </div>
       <Panel
+        scene={scene}
         height={panelHeight}
         onHeightChange={onPanelHeightChange}
         onResizeStateChange={onPanelResizeStateChange}
