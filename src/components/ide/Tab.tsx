@@ -20,7 +20,7 @@ export const Tab = ({ selectedFiles = [], onTabClose }: TabProps) => {
     const isActive = index === selectedFiles.length - 1; // 最後に選択されたファイルをアクティブにする
 
     // ファイル拡張子に基づいてアイコンを決定
-    let icon: React.ReactNode = "��";
+    let icon: React.ReactNode = "📁";
     if (fileName.endsWith(".md")) {
       icon = (
         <img
