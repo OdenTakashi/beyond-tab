@@ -404,14 +404,17 @@ export const SimpleTerminal = ({ terminalValue }: { terminalValue?: TerminalValu
     }
   };
 
-  const getLineColor = (type: TerminalLine["type"]) => {
+  const getLineColor = (type: TerminalLine["type"], value: string) => {
     switch (type) {
       case "command":
         return Colors.ide.panel.textActive;
       case "error":
         return "#f14c4c";
       case "oden":
-        return "#36f3a1";
+        if (value.includes("#=>")) {
+          return "#36f3a1";
+        }
+        return "#29a3d3";
       case "output":
       default:
         return Colors.ide.panel.text;
@@ -439,7 +442,7 @@ export const SimpleTerminal = ({ terminalValue }: { terminalValue?: TerminalValu
         <div
           key={line.id}
           style={{
-            color: getLineColor(line.type),
+            color: getLineColor(line.type, line.content),
             marginBottom: "2px",
             whiteSpace: "pre-wrap",
             wordBreak: "break-word",
