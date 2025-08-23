@@ -11,6 +11,37 @@ import { AIPanel } from "./AIPanel";
 export const IDEWindow = () => {
   const [panelHeight, setPanelHeight] = useState(200);
   const [isPanelResizing, setIsPanelResizing] = useState(false);
+  const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
+
+  const handleFileSelect = (files: string[]) => {
+    if (files.length === 1) {
+      const fileName = files[0];
+
+      // ファイルが既に選択されている場合は、既存の選択を維持
+      // 新しく選択されていない場合のみ追加
+      setSelectedFiles(prev => {
+        let newFiles: string[];
+
+        if (prev.includes(fileName)) {
+          // 既に選択されている場合は、そのファイルを最後に移動（アクティブにする）
+          newFiles = [...prev.filter(file => file !== fileName), fileName];
+        } else {
+          // 新しく選択されていない場合は追加
+          newFiles = [...prev, fileName];
+        }
+
+        return newFiles;
+      });
+    }
+  };
+
+  const handleTabClose = (closedFileName: string) => {
+    // タブが閉じられたファイルを選択されたファイルリストから削除
+    setSelectedFiles(prev => {
+      const newFiles = prev.filter(file => file !== closedFileName);
+      return newFiles;
+    });
+  };
 
   return (
     <div
@@ -27,7 +58,7 @@ export const IDEWindow = () => {
       <Header title="test" />
       <div style={{ display: "flex", flex: 1, flexDirection: "row", width: "100%" }}>
         <div style={{ width: 250 }}>
-          <PrimarySideBar />
+          <PrimarySideBar onFileSelect={handleFileSelect} />
         </div>
         <div style={{ flex: 1, overflow: "hidden" }}>
           <Pane
@@ -35,6 +66,8 @@ export const IDEWindow = () => {
             onPanelHeightChange={setPanelHeight}
             isPanelResizing={isPanelResizing}
             onPanelResizeStateChange={setIsPanelResizing}
+            selectedFiles={selectedFiles}
+            onTabClose={handleTabClose}
           />
         </div>
         <div style={{ width: 300 }}>
@@ -46,7 +79,7 @@ export const IDEWindow = () => {
 };
 
 // ツールバーとかファイル一覧があるところ
-const PrimarySideBar = () => {
+const PrimarySideBar = ({ onFileSelect }: { onFileSelect: (files: string[]) => void }) => {
   return (
     <div
       style={{
@@ -58,7 +91,7 @@ const PrimarySideBar = () => {
       }}
     >
       <Toolbar />
-      <FileExplorer />
+      <FileExplorer onFileSelect={onFileSelect} />
     </div>
   );
 };
@@ -69,11 +102,15 @@ const Pane = ({
   onPanelHeightChange,
   isPanelResizing,
   onPanelResizeStateChange,
+  selectedFiles,
+  onTabClose,
 }: {
   panelHeight: number;
   onPanelHeightChange: (height: number) => void;
   isPanelResizing: boolean;
   onPanelResizeStateChange: (isResizing: boolean) => void;
+  selectedFiles: string[];
+  onTabClose: (closedFileName: string) => void;
 }) => {
   const [isPanelVisible, setIsPanelVisible] = useState(true);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
@@ -130,7 +167,7 @@ const Pane = ({
           transition: isPanelResizing ? "none" : "height 0.15s ease-out",
         }}
       >
-        <Tab />
+        <Tab selectedFiles={selectedFiles} onTabClose={onTabClose} />
         <Editor />
       </div>
       <Panel
