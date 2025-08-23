@@ -101,20 +101,16 @@ export const IDEWindow = () => {
         setSceneIndex(0); // sceneReadme01から開始
       }
 
-      // ファイルが既に選択されている場合は、既存の選択を維持
+      // ファイルが既に選択されている場合は、順序を変更せず選択状態のみ更新
       // 新しく選択されていない場合のみ追加
       setSelectedFiles(prev => {
-        let newFiles: string[];
-
         if (prev.includes(fileName)) {
-          // 既に選択されている場合は、そのファイルを最後に移動（アクティブにする）
-          newFiles = [...prev.filter(file => file !== fileName), fileName];
+          // 既に選択されている場合は、順序を変更せずそのまま返す
+          return prev;
         } else {
-          // 新しく選択されていない場合は追加
-          newFiles = [...prev, fileName];
+          // 新しく選択されていない場合は末尾に追加
+          return [...prev, fileName];
         }
-
-        return newFiles;
       });
     }
   };
@@ -122,14 +118,9 @@ export const IDEWindow = () => {
   const handleTabClick = (fileName: string) => {
     // タブクリック時にファイルを選択状態にする
     setCurrentFile(fileName);
-
-    // ファイルが既に選択されている場合は、そのファイルを最後に移動（アクティブにする）
-    setSelectedFiles(prev => {
-      if (prev.includes(fileName)) {
-        return [...prev.filter(file => file !== fileName), fileName];
-      }
-      return prev;
-    });
+    
+    // ファイルの順序は変更せず、選択状態のみ更新
+    // 既存のタブの位置は維持される
   };
 
   const handleTabClose = (closedFileName: string) => {
