@@ -35,9 +35,9 @@ const ODEN_SCENES = [scene01, scene02];
 export const IDEWindow = () => {
   const [panelHeight, setPanelHeight] = useState(200);
   const [isPanelResizing, setIsPanelResizing] = useState(false);
-  const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
+  const [selectedFiles, setSelectedFiles] = useState<string[]>(["README.md"]);
   const [sceneIndex, setSceneIndex] = useState(0);
-  const [currentFile, setCurrentFile] = useState<string | null>(null);
+  const [currentFile, setCurrentFile] = useState<string>("README.md");
   const scene = scenes[sceneIndex];
 
   // Tabキーでシーンを切り替える

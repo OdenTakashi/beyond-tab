@@ -6,7 +6,7 @@ interface FileExplorerProps {
 }
 
 export const FileExplorer = ({ onFileSelect }: FileExplorerProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const handleFileClick = (fileName: string) => {
     // 親コンポーネントにファイル選択を通知
