@@ -1,9 +1,10 @@
 interface TabProps {
   selectedFiles?: string[];
   onTabClose?: (closedFileName: string) => void;
+  onTabClick?: (fileName: string) => void;
 }
 
-export const Tab = ({ selectedFiles = [], onTabClose }: TabProps) => {
+export const Tab = ({ selectedFiles = [], onTabClose, onTabClick }: TabProps) => {
   // selectedFilesが変更されたときにタブを更新
   const tabs = selectedFiles.map((fileName, index) => {
     const isActive = index === selectedFiles.length - 1; // 最後に選択されたファイルをアクティブにする
@@ -49,8 +50,10 @@ export const Tab = ({ selectedFiles = [], onTabClose }: TabProps) => {
   });
 
   const handleTabClick = (tabId: string) => {
-    // タブクリック時の処理は親コンポーネントで管理するため、ここでは何もしない
-    // 必要に応じて、親コンポーネントに通知するコールバックを追加することも可能
+    // タブクリック時に親コンポーネントに通知
+    if (onTabClick) {
+      onTabClick(tabId);
+    }
   };
 
   const handleTabClose = (tabId: string) => {

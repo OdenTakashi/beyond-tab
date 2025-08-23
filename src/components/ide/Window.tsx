@@ -109,6 +109,19 @@ export const IDEWindow = () => {
     }
   };
 
+  const handleTabClick = (fileName: string) => {
+    // タブクリック時にファイルを選択状態にする
+    setCurrentFile(fileName);
+    
+    // ファイルが既に選択されている場合は、そのファイルを最後に移動（アクティブにする）
+    setSelectedFiles(prev => {
+      if (prev.includes(fileName)) {
+        return [...prev.filter(file => file !== fileName), fileName];
+      }
+      return prev;
+    });
+  };
+
   const handleTabClose = (closedFileName: string) => {
     // タブが閉じられたファイルを選択されたファイルリストから削除
     setSelectedFiles(prev => {
@@ -166,6 +179,7 @@ export const IDEWindow = () => {
             onPanelResizeStateChange={setIsPanelResizing}
             selectedFiles={selectedFiles}
             onTabClose={handleTabClose}
+            onTabClick={handleTabClick}
           />
         </div>
         <div style={{ width: 300 }}>
@@ -204,6 +218,7 @@ const Pane = ({
   onPanelResizeStateChange,
   selectedFiles,
   onTabClose,
+  onTabClick,
 }: {
   scene: SceneType;
   editorContent: LineType[];
@@ -213,6 +228,7 @@ const Pane = ({
   onPanelResizeStateChange: (isResizing: boolean) => void;
   selectedFiles: string[];
   onTabClose: (closedFileName: string) => void;
+  onTabClick: (fileName: string) => void;
 }) => {
   const [isPanelVisible, setIsPanelVisible] = useState(true);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
@@ -271,7 +287,7 @@ const Pane = ({
           flexDirection:"column"
         }}
       >
-        <Tab selectedFiles={selectedFiles} onTabClose={onTabClose} />
+        <Tab selectedFiles={selectedFiles} onTabClose={onTabClose} onTabClick={onTabClick} />
         <div style={{ display: "flex", flexDirection: "column", width: "100%", flex: 1, overflow:"hidden" }}>
           <Editor lines={editorContent} />
         </div>
