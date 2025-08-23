@@ -18,7 +18,7 @@ const README_SCENES = readmeScenes;
 const ODEN_SCENES = daikonScenes;
 
 export const IDEWindow = () => {
-  const [panelHeight, setPanelHeight] = useState(200);
+  const [panelHeight, setPanelHeight] = useState(300);
   const [isPanelResizing, setIsPanelResizing] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState<string[]>(["README.md"]);
   const [sceneIndex, setSceneIndex] = useState(0);
@@ -212,7 +212,7 @@ const Pane = ({
   const handlePanelVisibilityChange = (isVisible: boolean) => {
     // パネルを表示する際に、サイズが最小の場合はデフォルトサイズに戻す
     if (isVisible && panelHeight < 80) {
-      onPanelHeightChange(200);
+      onPanelHeightChange(300);
     }
     setIsPanelVisible(isVisible);
   };
@@ -225,7 +225,7 @@ const Pane = ({
         e.preventDefault();
         // パネルを表示する際に、サイズが最小の場合はデフォルトサイズに戻す
         if (!isPanelVisible && panelHeight < 80) {
-          onPanelHeightChange(200);
+          onPanelHeightChange(300);
         }
         setIsPanelVisible(!isPanelVisible);
       }
