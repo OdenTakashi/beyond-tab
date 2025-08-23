@@ -11,6 +11,11 @@ import { AIPanel } from "./AIPanel";
 export const IDEWindow = () => {
   const [panelHeight, setPanelHeight] = useState(200);
   const [isPanelResizing, setIsPanelResizing] = useState(false);
+  const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
+
+  const handleFileSelect = (files: string[]) => {
+    setSelectedFiles(files);
+  };
 
   return (
     <div
@@ -27,7 +32,7 @@ export const IDEWindow = () => {
       <Header title="test" />
       <div style={{ display: "flex", flex: 1, flexDirection: "row", width: "100%" }}>
         <div style={{ width: 250 }}>
-          <PrimarySideBar />
+          <PrimarySideBar onFileSelect={handleFileSelect} />
         </div>
         <div style={{ flex: 1, overflow: "hidden" }}>
           <Pane
@@ -35,6 +40,7 @@ export const IDEWindow = () => {
             onPanelHeightChange={setPanelHeight}
             isPanelResizing={isPanelResizing}
             onPanelResizeStateChange={setIsPanelResizing}
+            selectedFiles={selectedFiles}
           />
         </div>
         <div style={{ width: 300 }}>
@@ -46,7 +52,7 @@ export const IDEWindow = () => {
 };
 
 // ツールバーとかファイル一覧があるところ
-const PrimarySideBar = () => {
+const PrimarySideBar = ({ onFileSelect }: { onFileSelect: (files: string[]) => void }) => {
   return (
     <div
       style={{
@@ -58,7 +64,7 @@ const PrimarySideBar = () => {
       }}
     >
       <Toolbar />
-      <FileExplorer />
+      <FileExplorer onFileSelect={onFileSelect} />
     </div>
   );
 };
@@ -69,11 +75,13 @@ const Pane = ({
   onPanelHeightChange,
   isPanelResizing,
   onPanelResizeStateChange,
+  selectedFiles,
 }: {
   panelHeight: number;
   onPanelHeightChange: (height: number) => void;
   isPanelResizing: boolean;
   onPanelResizeStateChange: (isResizing: boolean) => void;
+  selectedFiles: string[];
 }) => {
   const [isPanelVisible, setIsPanelVisible] = useState(true);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
@@ -130,7 +138,7 @@ const Pane = ({
           transition: isPanelResizing ? "none" : "height 0.15s ease-out",
         }}
       >
-        <Tab />
+        <Tab selectedFiles={selectedFiles} />
         <Editor />
       </div>
       <Panel

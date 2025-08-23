@@ -1,33 +1,50 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface TabItem {
   id: string;
   name: string;
-  icon: string;
+  icon: React.ReactNode;
   isActive: boolean;
   isModified: boolean;
   isCloseable: boolean;
 }
 
-export const Tab = () => {
-  const [tabs, setTabs] = useState<TabItem[]>([
-    {
-      id: "1",
-      name: "FileExplorer.tsx",
-      icon: "⚛️", // Reactアイコン
-      isActive: false,
-      isModified: false,
-      isCloseable: false,
-    },
-    {
-      id: "2",
-      name: "FileData.tsx",
-      icon: "⚛️", // Reactアイコン
-      isActive: false,
-      isModified: false,
-      isCloseable: true,
-    },
-  ]);
+interface TabProps {
+  selectedFiles?: string[];
+}
+
+export const Tab = ({ selectedFiles = [] }: TabProps) => {
+  const [tabs, setTabs] = useState<TabItem[]>([]);
+
+  // selectedFilesが変更されたときにタブを更新
+  useEffect(() => {
+    if (selectedFiles.length > 0) {
+      const newTabs = selectedFiles.map((fileName, index) => {
+        const isActive = index === selectedFiles.length - 1; // 最後に選択されたファイルをアクティブにする
+        
+        // ファイル拡張子に基づいてアイコンを決定
+        let icon: React.ReactNode = "📄";
+        if (fileName.endsWith('.md')) {
+          icon = <img src="/src/assets/readme.svg" alt="ruby" style={{ width: "16px", height: "16px" }} />;
+        } else if (fileName.endsWith('.oden')) {
+          icon = <img src="/src/assets/ruby.svg" alt="ruby" style={{ width: "16px", height: "16px" }} />;
+        }
+
+        return {
+          id: fileName,
+          name: fileName,
+          icon,
+          isActive,
+          isModified: false,
+          isCloseable: true,
+        };
+      });
+
+      setTabs(newTabs);
+    } else {
+      setTabs([]);
+    }
+  }, [selectedFiles]);
 
   const handleTabClick = (tabId: string) => {
     setTabs(tabs.map(tab => ({
@@ -39,6 +56,11 @@ export const Tab = () => {
   const handleTabClose = (tabId: string) => {
     setTabs(tabs.filter(tab => tab.id !== tabId));
   };
+
+  // タブがない場合は何も表示しない
+  if (tabs.length === 0) {
+    return null;
+  }
 
   return (
     <div
