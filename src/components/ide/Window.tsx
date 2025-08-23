@@ -267,10 +267,14 @@ const Pane = ({
           backgroundColor: Colors.ide.background,
           overflow: "hidden",
           transition: isPanelResizing ? "none" : "height 0.15s ease-out",
+          display: "flex",
+          flexDirection:"column"
         }}
       >
         <Tab selectedFiles={selectedFiles} onTabClose={onTabClose} />
-        <Editor lines={editorContent} />
+        <div style={{ display: "flex", flexDirection: "column", width: "100%", flex: 1, overflow:"hidden" }}>
+          <Editor lines={editorContent} />
+        </div>
       </div>
       <Panel
         height={panelHeight}
