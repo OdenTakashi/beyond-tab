@@ -4,7 +4,7 @@ export const Editor = ({ lines }: { lines: LineType[] }) => {
   return (
     <div
       style={{
-        height:"100%",
+        height: "100%",
         width: "100%",
         color: "white",
         overflowY: "scroll",
@@ -12,21 +12,20 @@ export const Editor = ({ lines }: { lines: LineType[] }) => {
         backgroundColor: "#1e1e1e",
       }}
     >
-          <div
-      style={{
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-            {lines.map((line, index) => (
-        <div key={index} style={{ display: "flex", flexDirection: "row", gap: 4 }}>
-          <Number rowNumber={index + 1} />
-          <div style={{ display: "flex", flexDirection: "row", gap: 4 }}>{line.value}</div>
-        </div>
-      ))}
-    </div>
-
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        {lines.map((line, index) => (
+          <div key={index} style={{ display: "flex", flexDirection: "row", gap: 4 }}>
+            <Number rowNumber={index + 1} />
+            <div style={{ display: "flex", flexDirection: "row", gap: 4 }}>{line.value}</div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

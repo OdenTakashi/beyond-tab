@@ -177,14 +177,17 @@ export default {
     {
       value: (
         <>
-          <Token value="# 最後に" isSuggestion/>
+          <Token value="# 最後に" isSuggestion />
         </>
       ),
     },
     {
       value: (
         <>
-          <Token value="このアプリが、あなたのプログラミングライフに、新たな気づきと笑いをもたらすことを願っています。" isSuggestion/>
+          <Token
+            value="このアプリが、あなたのプログラミングライフに、新たな気づきと笑いをもたらすことを願っています。"
+            isSuggestion
+          />
         </>
       ),
     },

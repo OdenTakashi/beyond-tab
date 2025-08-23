@@ -75,6 +75,5 @@ export default {
         </>
       ),
     },
-  
   ],
 } as SceneType;

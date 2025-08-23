@@ -112,9 +112,7 @@ export default {
     {
       value: (
         <>
-          <Token
-            value="controller/daikon.oden ファイルを開いてください。このファイルは、あなたのTabキー連打をただひたすらに待っています。あとは、指が筋肉痛になるまでTabキーを叩きまくってください。"
-          />
+          <Token value="controller/daikon.oden ファイルを開いてください。このファイルは、あなたのTabキー連打をただひたすらに待っています。あとは、指が筋肉痛になるまでTabキーを叩きまくってください。" />
         </>
       ),
     },
@@ -161,6 +159,5 @@ export default {
     {
       value: <></>,
     },
-    
   ],
 } as SceneType;

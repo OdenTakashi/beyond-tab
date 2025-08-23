@@ -12,7 +12,7 @@ import sceneReadme01 from "../../scenes/readme_01";
 import sceneReadme02 from "../../scenes/readme_02";
 import sceneReadme03 from "../../scenes/readme_03";
 import sceneReadme04 from "../../scenes/readme_04";
-import sceneReadme05 from "../../scenes/readme_05"
+import sceneReadme05 from "../../scenes/readme_05";
 import sceneReadme06 from "../../scenes/readme_06";
 import sceneReadme07 from "../../scenes/readme_07";
 import sceneReadme08 from "../../scenes/readme_08";
@@ -38,7 +38,17 @@ const scenes: SceneType[] = [
 ];
 
 // ファイルタイプ別のシーン配列を定義
-const README_SCENES = [sceneReadme01, sceneReadme02, sceneReadme03, sceneReadme04, sceneReadme05,sceneReadme06,sceneReadme07,sceneReadme08,sceneReadme09];
+const README_SCENES = [
+  sceneReadme01,
+  sceneReadme02,
+  sceneReadme03,
+  sceneReadme04,
+  sceneReadme05,
+  sceneReadme06,
+  sceneReadme07,
+  sceneReadme08,
+  sceneReadme09,
+];
 const ODEN_SCENES = [scene01, scene02];
 
 export const IDEWindow = () => {
@@ -112,7 +122,7 @@ export const IDEWindow = () => {
   const handleTabClick = (fileName: string) => {
     // タブクリック時にファイルを選択状態にする
     setCurrentFile(fileName);
-    
+
     // ファイルが既に選択されている場合は、そのファイルを最後に移動（アクティブにする）
     setSelectedFiles(prev => {
       if (prev.includes(fileName)) {
@@ -284,11 +294,19 @@ const Pane = ({
           overflow: "hidden",
           transition: isPanelResizing ? "none" : "height 0.15s ease-out",
           display: "flex",
-          flexDirection:"column"
+          flexDirection: "column",
         }}
       >
         <Tab selectedFiles={selectedFiles} onTabClose={onTabClose} onTabClick={onTabClick} />
-        <div style={{ display: "flex", flexDirection: "column", width: "100%", flex: 1, overflow:"hidden" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            flex: 1,
+            overflow: "hidden",
+          }}
+        >
           <Editor lines={editorContent} />
         </div>
       </div>
