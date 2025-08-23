@@ -154,7 +154,7 @@ export const AIPanel = ({ chat }: { chat?: ChatType[] }) => {
           >
             <div
               style={{
-                fontSize: "13px",
+                fontSize: "16px",
                 lineHeight: "1.5",
                 whiteSpace: "pre-wrap",
                 wordBreak: "break-word",
