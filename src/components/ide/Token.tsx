@@ -49,3 +49,7 @@ export const Token = ({
     </span>
   );
 };
+
+export const Tab = () => {
+  return <span style={{ width: 16, height: 16 }}></span>;
+};

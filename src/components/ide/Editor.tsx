@@ -1,6 +1,6 @@
 import type { LineType } from "../../types/LineValue";
 
-export const Editor = ({ lines }: { lines: LineType[] }) => {
+export const Editor = ({ lines, opacity }: { lines: LineType[] }) => {
   return (
     <div
       style={{

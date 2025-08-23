@@ -74,6 +74,57 @@ export default [
     value: (
       <>
         <Tab />
+        <Token value="def" />
+        <Token value="laugh" />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Tab />
+        <Token value="Emotion" />
+        <Token value="." />
+        <Token value="new" />
+        <Token value="." />
+        <Token value="laugh" />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Token value="end" />
+      </>
+    ),
+  },
+  {
+    value: <></>,
+  },
+  {
+    value: (
+      <>
+        <Token value="end" />
+      </>
+    ),
+  },
+  {
+    value: <></>,
+  },
+  {
+    value: (
+      <>
+        <Token value="class" isSuggestion />
+        <Token value="Emotion" isSuggestion />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
         <Token value="def" isSuggestion />
         <Token value="laugh" isSuggestion />
       </>
@@ -84,11 +135,8 @@ export default [
       <>
         <Tab />
         <Tab />
-        <Token value="Emotion" isSuggestion />
-        <Token value="." isSuggestion />
-        <Token value="new" isSuggestion />
-        <Token value="." isSuggestion />
-        <Token value="laugh" isSuggestion />
+        <Token value="puts" isSuggestion />
+        <Token value="'wwwwwww'" isSuggestion />
       </>
     ),
   },
@@ -103,7 +151,7 @@ export default [
   {
     value: (
       <>
-        <Token value="end" />
+        <Token value="end" isSuggestion />
       </>
     ),
   },
