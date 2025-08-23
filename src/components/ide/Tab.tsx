@@ -20,14 +20,32 @@ export const Tab = ({ selectedFiles = [], onTabClose }: TabProps) => {
     const isActive = index === selectedFiles.length - 1; // 最後に選択されたファイルをアクティブにする
 
     // ファイル拡張子に基づいてアイコンを決定
-    let icon: React.ReactNode = "📄";
+    let icon: React.ReactNode = "📁";
     if (fileName.endsWith(".md")) {
       icon = (
-        <img src="/src/assets/readme.svg" alt="ruby" style={{ width: "16px", height: "16px" }} />
+        <img
+          src="/src/assets/readme.svg"
+          alt="readme"
+          style={{
+            width: "16px",
+            height: "16px",
+            display: "block",
+            verticalAlign: "middle",
+          }}
+        />
       );
     } else if (fileName.endsWith(".oden")) {
       icon = (
-        <img src="/src/assets/ruby.svg" alt="ruby" style={{ width: "16px", height: "16px" }} />
+        <img
+          src="/src/assets/ruby.svg"
+          alt="ruby"
+          style={{
+            width: "16px",
+            height: "16px",
+            display: "block",
+            verticalAlign: "middle",
+          }}
+        />
       );
     }
 
