@@ -101,39 +101,6 @@ export default [
     ),
   },
   {
-    value: <></>,
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="def" />
-        <Token value="cry" />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Tab />
-        <Token value="Emotion" />
-        <Token value="." />
-        <Token value="new" />
-        <Token value="." />
-        <Token value="cry" />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="end" />
-      </>
-    ),
-  },
-  {
     value: (
       <>
         <Token value="end" />
@@ -167,36 +134,6 @@ export default [
         <Tab />
         <Token value="puts" />
         <Token value="'wwwwwww'" />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="end" />
-      </>
-    ),
-  },
-  {
-    value: <></>,
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="def" />
-        <Token value="cry" />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Tab />
-        <Token value="puts" />
-        <Token value="'しくしく'" />
       </>
     ),
   },

@@ -112,42 +112,6 @@ export default [
   {
     value: (
       <>
-        <Tab />
-        <Token value="def" />
-        <Token value="cry" />
-        <Token value="(" isSuggestion />
-        <Token value="reason" isSuggestion />
-        <Token value=")" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Tab />
-        <Token value="Emotion" />
-        <Token value="." />
-        <Token value="new" />
-        <Token value="." />
-        <Token value="cry" />
-        <Token value="(" isSuggestion />
-        <Token value="reason" isSuggestion />
-        <Token value=")" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="end" />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
         <Token value="end" />
       </>
     ),
@@ -214,71 +178,6 @@ export default [
         <Tab />
         <Token value="puts" />
         <Token value="'wwwwwww'" />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="end" />
-      </>
-    ),
-  },
-  {
-    value: <></>,
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="def" />
-        <Token value="cry" />
-        <Token value="(" isSuggestion />
-        <Token value="reason" isSuggestion />
-        <Token value=")" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Tab />
-        <Token value="unless" isSuggestion />
-        <Token value="reason" isSuggestion />
-        <Token value="." isSuggestion />
-        <Token value="present?" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Tab />
-        <Tab />
-        <Token value="raise" isSuggestion />
-        <Token value='"Crying requires a reason"' isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Tab />
-        <Token value="end" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Tab />
-        <Token value="puts" />
-        <Token value="'しくしく'" />
       </>
     ),
   },
