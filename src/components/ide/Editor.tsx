@@ -1,7 +1,7 @@
 import type { LineType } from "../../types/LineValue";
-import { scene01 } from "../../scenes/01";
+import { sceneReadme } from "../../scenes/readme";
 
-export const Editor = ({ lines = scene01.lines }: { lines?: LineType[] }) => {
+export const Editor = ({ lines = sceneReadme.lines }: { lines?: LineType[] }) => {
   return (
     <div
       style={{
