@@ -8,48 +8,14 @@ import { Tab } from "./Tab";
 import { Editor } from "./Editor";
 import { AIPanel } from "./AIPanel";
 import type { SceneType } from "../../types/Scene";
-import sceneReadme01 from "../../scenes/readme_01";
-import sceneReadme02 from "../../scenes/readme_02";
-import sceneReadme03 from "../../scenes/readme_03";
-import sceneReadme04 from "../../scenes/readme_04";
-import sceneReadme05 from "../../scenes/readme_05";
-import sceneReadme06 from "../../scenes/readme_06";
-import sceneReadme07 from "../../scenes/readme_07";
-import sceneReadme08 from "../../scenes/readme_08";
-import sceneReadme09 from "../../scenes/readme_09";
-import { scene01 } from "../../scenes/daikon_01";
-import { scene02 } from "../../scenes/daikon_02";
 import nanimonodemonai from "../../scenes/nanimonodemonai";
-import type { ChatType } from "../../types/Chat";
 import type { LineType } from "../../types/LineValue";
-
-const scenes: SceneType[] = [
-  sceneReadme01,
-  sceneReadme02,
-  sceneReadme03,
-  sceneReadme04,
-  sceneReadme05,
-  sceneReadme06,
-  sceneReadme07,
-  sceneReadme08,
-  sceneReadme09,
-  scene01,
-  scene02,
-];
+import readmeScenes from "../../scenes/readme";
+import daikonScenes from "../../scenes/daikon";
 
 // ファイルタイプ別のシーン配列を定義
-const README_SCENES = [
-  sceneReadme01,
-  sceneReadme02,
-  sceneReadme03,
-  sceneReadme04,
-  sceneReadme05,
-  sceneReadme06,
-  sceneReadme07,
-  sceneReadme08,
-  sceneReadme09,
-];
-const ODEN_SCENES = [scene01, scene02];
+const README_SCENES = readmeScenes;
+const ODEN_SCENES = daikonScenes;
 
 export const IDEWindow = () => {
   const [panelHeight, setPanelHeight] = useState(200);
@@ -57,7 +23,6 @@ export const IDEWindow = () => {
   const [selectedFiles, setSelectedFiles] = useState<string[]>(["README.md"]);
   const [sceneIndex, setSceneIndex] = useState(0);
   const [currentFile, setCurrentFile] = useState<string>("README.md");
-  const scene = scenes[sceneIndex];
 
   // Tabキーでシーンを切り替える
   const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -71,7 +36,7 @@ export const IDEWindow = () => {
       } else if (currentFile === "daikon.oden") {
         maxSceneIndex = ODEN_SCENES.length - 1;
       } else {
-        maxSceneIndex = scenes.length - 1;
+        maxSceneIndex = README_SCENES.length - 1;
       }
 
       // 最大シーン数に達していない場合のみシーンを切り替え
@@ -136,15 +101,15 @@ export const IDEWindow = () => {
     if (currentFile === "README.md") {
       // README.mdの場合は、sceneReadme01, sceneReadme02, ... の順番で表示
       if (sceneIndex < README_SCENES.length) {
-        return README_SCENES[sceneIndex] || sceneReadme01;
+        return README_SCENES[sceneIndex] || README_SCENES[0];
       }
-      return sceneReadme01;
+      return README_SCENES[0];
     } else if (currentFile === "daikon.oden") {
       // .odenファイルの場合は、scene01, scene02, ... の順番で表示
       if (sceneIndex < ODEN_SCENES.length) {
-        return ODEN_SCENES[sceneIndex] || scene01;
+        return ODEN_SCENES[sceneIndex] || ODEN_SCENES[0];
       }
-      return scene01;
+      return ODEN_SCENES[0];
     } else {
       // その他のファイルの場合はnanimonodemonai.tsxの内容を表示
       return nanimonodemonai;
