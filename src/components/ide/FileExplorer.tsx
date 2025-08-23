@@ -1,5 +1,10 @@
 import { useState } from "react";
 import { FileData } from "./FileData";
+import rubyrSVG from "../../assets/ruby.svg";
+import controllerSVG from "/src/assets/folder-controller.svg";
+import modelSVG from "/src/assets/folder-model.svg";
+import viewSVG from "/src/assets/folder-view.svg";
+import readmeSVG from "/src/assets/readme.svg";
 
 interface FileExplorerProps {
   onFileSelect?: (selectedFiles: string[]) => void;
@@ -113,82 +118,62 @@ export const FileExplorer = ({ onFileSelect }: FileExplorerProps) => {
           {isOpen && (
             <div style={{ marginLeft: "12px", borderLeft: "1px solid #3c3c3c" }}>
               {/* controllers folder */}
-              <FileData
-                fileName="controllers"
-                isFolder={true}
-                iconImage="/src/assets/folder-controller.svg"
-              >
+              <FileData fileName="controllers" isFolder={true} iconImage={controllerSVG}>
                 <FileData
                   fileName="daikon.oden"
-                  iconImage="/src/assets/ruby.svg"
+                  iconImage={rubyrSVG}
                   onFileClick={handleFileClick}
                 />
                 <FileData
                   fileName="konbu.oden"
-                  iconImage="/src/assets/ruby.svg"
+                  iconImage={rubyrSVG}
                   onFileClick={handleFileClick}
                 />
                 <FileData
                   fileName="chikuwabu.oden"
-                  iconImage="/src/assets/ruby.svg"
+                  iconImage={rubyrSVG}
                   onFileClick={handleFileClick}
                 />
                 <FileData
                   fileName="tamago.oden"
-                  iconImage="/src/assets/ruby.svg"
+                  iconImage={rubyrSVG}
                   onFileClick={handleFileClick}
                 />
                 <FileData
                   fileName="tanpen.oden"
-                  iconImage="/src/assets/ruby.svg"
+                  iconImage={rubyrSVG}
                   onFileClick={handleFileClick}
                 />
                 <FileData
                   fileName="konnyaku.oden"
-                  iconImage="/src/assets/ruby.svg"
+                  iconImage={rubyrSVG}
                   onFileClick={handleFileClick}
                 />
                 <FileData
                   fileName="chikuwa.oden"
-                  iconImage="/src/assets/ruby.svg"
+                  iconImage={rubyrSVG}
                   onFileClick={handleFileClick}
                 />
               </FileData>
 
               {/* models folder */}
-              <FileData fileName="models" isFolder={true} iconImage="/src/assets/folder-model.svg">
-                <FileData
-                  fileName="user.oden"
-                  iconImage="/src/assets/ruby.svg"
-                  onFileClick={handleFileClick}
-                />
-                <FileData
-                  fileName="post.oden"
-                  iconImage="/src/assets/ruby.svg"
-                  onFileClick={handleFileClick}
-                />
+              <FileData fileName="models" isFolder={true} iconImage={modelSVG}>
+                <FileData fileName="user.oden" iconImage={rubyrSVG} onFileClick={handleFileClick} />
+                <FileData fileName="post.oden" iconImage={rubyrSVG} onFileClick={handleFileClick} />
               </FileData>
 
               {/* views folder */}
-              <FileData fileName="views" isFolder={true} iconImage="/src/assets/folder-view.svg">
+              <FileData fileName="views" isFolder={true} iconImage={viewSVG}>
                 <FileData
                   fileName="index.oden"
-                  iconImage="/src/assets/ruby.svg"
+                  iconImage={rubyrSVG}
                   onFileClick={handleFileClick}
                 />
-                <FileData
-                  fileName="show.oden"
-                  iconImage="/src/assets/ruby.svg"
-                  onFileClick={handleFileClick}
-                />
+                <FileData fileName="show.oden" iconImage={rubyrSVG} onFileClick={handleFileClick} />
               </FileData>
 
               {/* README.md */}
-              <FileData
-                fileName="README.md"
-                iconImage="/src/assets/readme.svg"
-                onFileClick={handleFileClick}
-              />
+              <FileData fileName="README.md" iconImage={readmeSVG} onFileClick={handleFileClick} />
             </div>
           )}
         </div>
