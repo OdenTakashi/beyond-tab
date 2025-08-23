@@ -13,8 +13,8 @@ import sceneReadme02 from "../../scenes/readme_02";
 import sceneReadme03 from "../../scenes/readme_03";
 import sceneReadme04 from "../../scenes/readme_04";
 import sceneReadme05 from "../../scenes/readme_05";
-import { scene01 } from "../../scenes/01";
-import { scene02 } from "../../scenes/02";
+import { scene01 } from "../../scenes/daikon_01";
+import { scene02 } from "../../scenes/daikon_02";
 import nanimonodemonai from "../../scenes/nanimonodemonai";
 import type { ChatType } from "../../types/Chat";
 import type { LineType } from "../../types/LineValue";
@@ -114,18 +114,18 @@ export const IDEWindow = () => {
     if (currentFile === "README.md") {
       // README.mdの場合は、sceneReadme01, sceneReadme02, ... の順番で表示
       if (sceneIndex < README_SCENES.length) {
-        return README_SCENES[sceneIndex]?.editor || sceneReadme01.editor;
+        return README_SCENES[sceneIndex] || sceneReadme01;
       }
-      return sceneReadme01.editor;
+      return sceneReadme01;
     } else if (currentFile === "daikon.oden") {
       // .odenファイルの場合は、scene01, scene02, ... の順番で表示
       if (sceneIndex < ODEN_SCENES.length) {
-        return ODEN_SCENES[sceneIndex]?.editor || scene01.editor;
+        return ODEN_SCENES[sceneIndex] || scene01;
       }
-      return scene01.editor;
+      return scene01;
     } else {
       // その他のファイルの場合はnanimonodemonai.tsxの内容を表示
-      return nanimonodemonai.editor;
+      return nanimonodemonai;
     }
   };
 
@@ -151,7 +151,7 @@ export const IDEWindow = () => {
         <div style={{ flex: 1, overflow: "hidden" }}>
           <Pane
             scene={scene}
-            editorContent={getEditorContent()}
+            editorContent={getEditorContent().editor}
             panelHeight={panelHeight}
             onPanelHeightChange={setPanelHeight}
             isPanelResizing={isPanelResizing}
@@ -161,7 +161,7 @@ export const IDEWindow = () => {
           />
         </div>
         <div style={{ width: 300 }}>
-          <AIPanelWrapper scene={scene} />
+          <AIPanelWrapper scene={getEditorContent()} />
         </div>
       </div>
     </div>
