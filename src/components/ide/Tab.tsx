@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 interface TabProps {
   selectedFiles?: string[];
   onTabClose?: (closedFileName: string) => void;
@@ -5,9 +7,12 @@ interface TabProps {
 }
 
 export const Tab = ({ selectedFiles = [], onTabClose, onTabClick }: TabProps) => {
+  const [activeTab, setActiveTab] = useState<string | null>(null);
+
   // selectedFilesが変更されたときにタブを更新
   const tabs = selectedFiles.map((fileName, index) => {
-    const isActive = index === selectedFiles.length - 1; // 最後に選択されたファイルをアクティブにする
+    // アクティブなタブを決定（クリックされたタブまたは最後に選択されたファイル）
+    const isActive = activeTab === fileName || (activeTab === null && index === selectedFiles.length - 1);
 
     // ファイル拡張子に基づいてアイコンを決定
     let icon: React.ReactNode = "📁";
@@ -50,7 +55,10 @@ export const Tab = ({ selectedFiles = [], onTabClose, onTabClick }: TabProps) =>
   });
 
   const handleTabClick = (tabId: string) => {
-    // タブクリック時に親コンポーネントに通知
+    // タブクリック時にアクティブなタブを設定
+    setActiveTab(tabId);
+    
+    // 親コンポーネントに通知
     if (onTabClick) {
       onTabClick(tabId);
     }
