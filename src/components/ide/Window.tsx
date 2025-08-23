@@ -118,7 +118,7 @@ export const IDEWindow = () => {
   const handleTabClick = (fileName: string) => {
     // タブクリック時にファイルを選択状態にする
     setCurrentFile(fileName);
-    
+
     // ファイルの順序は変更せず、選択状態のみ更新
     // 既存のタブの位置は維持される
   };
