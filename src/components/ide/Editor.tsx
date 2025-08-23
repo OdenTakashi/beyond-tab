@@ -1,5 +1,7 @@
-type Message = {
-  values: string[];
+import type { ReactNode } from "react";
+
+type LineType = {
+  value: ReactNode;
 };
 
 // 予約語（ruby）
@@ -35,22 +37,105 @@ const reservedWords: { [key: string]: string } = {
   '"': "#BCE273",
 };
 
-export const Editor = ({
-  message = {
-    values: [
-      "class User",
-      "\tname: string;",
-      "\tage: number;",
-      "end",
-      "",
-      "def hello",
-      "\tputs 'Hello, World!'",
-      "end",
-    ],
+const Token = ({ value, isSuggestion = false }: { value: string; isSuggestion?: boolean }) => {
+  return (
+    <span
+      style={{
+        color: reservedWords[value] ? reservedWords[value] : "#CBD4E2",
+        opacity: isSuggestion ? 0.5 : 1,
+      }}
+    >
+      {value}
+    </span>
+  );
+};
+
+const Tab = () => {
+  return <span style={{ width: 16 }} />;
+};
+
+const sample: LineType[] = [
+  {
+    value: (
+      <>
+        <Token value="class" />
+        <Token value="User" />
+      </>
+    ),
   },
-}: {
-  message: Message;
-}) => {
+  {
+    value: (
+      <>
+        <Tab />
+        <Token value="name" />
+        <Token value=":" />
+        <Token value="string" />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Token value="age" isSuggestion />
+        <Token value=":" isSuggestion />
+        <Token value="number" isSuggestion />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Token value="address" isSuggestion />
+        <Token value=":" isSuggestion />
+        <Token value="string" isSuggestion />
+      </>
+    ),
+  },
+  {
+    value: <></>,
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Token value="def" />
+        <Token value="greet" />
+        <Token value="(" />
+        <Token value="name" isSuggestion />
+        <Token value=")" />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Tab />
+        <Token value="puts" isSuggestion />
+        <Token value='"Hello, #{name}!' isSuggestion />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Token value="end" isSuggestion />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Token value="end" />
+      </>
+    ),
+  },
+];
+
+export const Editor = ({ lines = sample }: { lines?: LineType[] }) => {
   return (
     <div
       style={{
@@ -61,34 +146,12 @@ export const Editor = ({
         flexDirection: "column",
       }}
     >
-      {message.values.map((value, index) => (
+      {lines.map((line, index) => (
         <div style={{ display: "flex", flexDirection: "row" }}>
           <Number rowNumber={index + 1} />
-          <Line value={value} />
+          <div style={{ display: "flex", flexDirection: "row", gap: 4 }}>{line.value}</div>
         </div>
       ))}
-    </div>
-  );
-};
-
-const Line = ({ value }: { value: string }) => {
-  const words = value.replace(/^\t+/, "").split(" ");
-
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        paddingLeft: (value.match(/^\t+/)?.[0]?.length || 0) * 16,
-        gap: 4,
-      }}
-    >
-      {words.map(word => {
-        if (reservedWords[word]) {
-          return <span style={{ color: reservedWords[word] }}>{word}</span>;
-        }
-        return <span style={{ color: "#CBD4E2" }}>{word}</span>;
-      })}
     </div>
   );
 };
