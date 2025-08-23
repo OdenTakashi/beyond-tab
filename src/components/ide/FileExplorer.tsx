@@ -7,32 +7,15 @@ interface FileExplorerProps {
 
 export const FileExplorer = ({ onFileSelect }: FileExplorerProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
 
   const handleFileClick = (fileName: string) => {
-    console.log(`File clicked: ${fileName}`);
+    console.log(`FileExplorer - File clicked: ${fileName}`);
     
-    // ファイルが既に選択されている場合は、既存の選択を維持
-    // 新しく選択されていない場合のみ追加
-    let newSelectedFiles: string[];
-    
-    if (selectedFiles.includes(fileName)) {
-      // 既に選択されている場合は、そのファイルを最後に移動（アクティブにする）
-      newSelectedFiles = [
-        ...selectedFiles.filter(file => file !== fileName),
-        fileName
-      ];
-    } else {
-      // 新しく選択されていない場合は追加
-      newSelectedFiles = [...selectedFiles, fileName];
-    }
-    
-    setSelectedFiles(newSelectedFiles);
-    console.log("Selected files:", newSelectedFiles);
-    
-    // 親コンポーネントに選択されたファイルを通知
+    // 親コンポーネントにファイル選択を通知
+    // 状態管理は親コンポーネント（Window）で行う
     if (onFileSelect) {
-      onFileSelect(newSelectedFiles);
+      console.log("FileExplorer - Calling onFileSelect with:", fileName);
+      onFileSelect([fileName]);
     }
   };
 

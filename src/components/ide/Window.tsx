@@ -14,7 +14,44 @@ export const IDEWindow = () => {
   const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
 
   const handleFileSelect = (files: string[]) => {
-    setSelectedFiles(files);
+    console.log("Window - handleFileSelect called with:", files);
+    
+    if (files.length === 1) {
+      const fileName = files[0];
+      
+      // ファイルが既に選択されている場合は、既存の選択を維持
+      // 新しく選択されていない場合のみ追加
+      setSelectedFiles(prev => {
+        let newFiles: string[];
+        
+        if (prev.includes(fileName)) {
+          // 既に選択されている場合は、そのファイルを最後に移動（アクティブにする）
+          newFiles = [
+            ...prev.filter(file => file !== fileName),
+            fileName
+          ];
+          console.log(`Window - File already selected, reordering:`, newFiles);
+        } else {
+          // 新しく選択されていない場合は追加
+          newFiles = [...prev, fileName];
+          console.log(`Window - New file selected, adding:`, newFiles);
+        }
+        
+        console.log("Window - Final selectedFiles:", newFiles);
+        return newFiles;
+      });
+    }
+  };
+
+  const handleTabClose = (closedFileName: string) => {
+    console.log("Window - handleTabClose called with:", closedFileName);
+    console.log("Window - selectedFiles before:", selectedFiles);
+    // タブが閉じられたファイルを選択されたファイルリストから削除
+    setSelectedFiles(prev => {
+      const newFiles = prev.filter(file => file !== closedFileName);
+      console.log("Window - selectedFiles after:", newFiles);
+      return newFiles;
+    });
   };
 
   return (
@@ -41,6 +78,7 @@ export const IDEWindow = () => {
             isPanelResizing={isPanelResizing}
             onPanelResizeStateChange={setIsPanelResizing}
             selectedFiles={selectedFiles}
+            onTabClose={handleTabClose}
           />
         </div>
         <div style={{ width: 300 }}>
@@ -76,12 +114,14 @@ const Pane = ({
   isPanelResizing,
   onPanelResizeStateChange,
   selectedFiles,
+  onTabClose,
 }: {
   panelHeight: number;
   onPanelHeightChange: (height: number) => void;
   isPanelResizing: boolean;
   onPanelResizeStateChange: (isResizing: boolean) => void;
   selectedFiles: string[];
+  onTabClose: (closedFileName: string) => void;
 }) => {
   const [isPanelVisible, setIsPanelVisible] = useState(true);
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
@@ -138,7 +178,7 @@ const Pane = ({
           transition: isPanelResizing ? "none" : "height 0.15s ease-out",
         }}
       >
-        <Tab selectedFiles={selectedFiles} />
+        <Tab selectedFiles={selectedFiles} onTabClose={onTabClose} />
         <Editor />
       </div>
       <Panel

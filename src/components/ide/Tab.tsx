@@ -11,50 +11,47 @@ interface TabItem {
 
 interface TabProps {
   selectedFiles?: string[];
+  onTabClose?: (closedFileName: string) => void;
 }
 
-export const Tab = ({ selectedFiles = [] }: TabProps) => {
-  const [tabs, setTabs] = useState<TabItem[]>([]);
-
+export const Tab = ({ selectedFiles = [], onTabClose }: TabProps) => {
+  // デバッグ用ログ
+  console.log("Tab component - selectedFiles:", selectedFiles);
+  
   // selectedFilesが変更されたときにタブを更新
-  useEffect(() => {
-    if (selectedFiles.length > 0) {
-      const newTabs = selectedFiles.map((fileName, index) => {
-        const isActive = index === selectedFiles.length - 1; // 最後に選択されたファイルをアクティブにする
-        
-        // ファイル拡張子に基づいてアイコンを決定
-        let icon: React.ReactNode = "📄";
-        if (fileName.endsWith('.md')) {
-          icon = <img src="/src/assets/readme.svg" alt="ruby" style={{ width: "16px", height: "16px" }} />;
-        } else if (fileName.endsWith('.oden')) {
-          icon = <img src="/src/assets/ruby.svg" alt="ruby" style={{ width: "16px", height: "16px" }} />;
-        }
-
-        return {
-          id: fileName,
-          name: fileName,
-          icon,
-          isActive,
-          isModified: false,
-          isCloseable: true,
-        };
-      });
-
-      setTabs(newTabs);
-    } else {
-      setTabs([]);
+  const tabs = selectedFiles.map((fileName, index) => {
+    const isActive = index === selectedFiles.length - 1; // 最後に選択されたファイルをアクティブにする
+    
+    // ファイル拡張子に基づいてアイコンを決定
+    let icon: React.ReactNode = "📄";
+    if (fileName.endsWith('.md')) {
+      icon = <img src="/src/assets/readme.svg" alt="ruby" style={{ width: "16px", height: "16px" }} />;
+    } else if (fileName.endsWith('.oden')) {
+      icon = <img src="/src/assets/ruby.svg" alt="ruby" style={{ width: "16px", height: "16px" }} />;
     }
-  }, [selectedFiles]);
+
+    return {
+      id: fileName,
+      name: fileName,
+      icon,
+      isActive,
+      isModified: false,
+      isCloseable: true,
+    };
+  });
+
+  console.log("Tab component - generated tabs:", tabs);
 
   const handleTabClick = (tabId: string) => {
-    setTabs(tabs.map(tab => ({
-      ...tab,
-      isActive: tab.id === tabId,
-    })));
+    // タブクリック時の処理は親コンポーネントで管理するため、ここでは何もしない
+    // 必要に応じて、親コンポーネントに通知するコールバックを追加することも可能
   };
 
   const handleTabClose = (tabId: string) => {
-    setTabs(tabs.filter(tab => tab.id !== tabId));
+    // タブを閉じた時に親コンポーネントに通知
+    if (onTabClose) {
+      onTabClose(tabId);
+    }
   };
 
   // タブがない場合は何も表示しない
