@@ -174,116 +174,116 @@ export default [
   // 感情が nil になる
   {
     editor: editor08,
-    opacity: 0.1,
+    opacity: 0,
   },
   // terminal: 感情が nil になる（coding）
   {
     editor: editor08_fix,
-    opacity: 0.1,
+    opacity: 0,
   },
   {
     editor: editor08_fix,
     terminal: terminal13,
-    opacity: 0.1,
+    opacity: 0,
   },
   {
     editor: editor08_fix,
     terminal: terminal14,
-    opacity: 0.2,
+    opacity: 0,
   },
   // laugh, cry に reason が必要になる
   {
     editor: editor09,
-    opacity: 0.2,
+    opacity: 0,
   },
   // terminal: laugh がエラーになる
   {
     editor: editor09_fix,
-    opacity: 0.3,
+    opacity: 0,
   },
   {
     editor: editor09_fix,
     terminal: terminal15,
-    opacity: 0.4,
+    opacity: 0,
   },
   {
     editor: editor09_fix,
     terminal: terminal16,
-    opacity: 0.5,
+    opacity: 0,
   },
   // terminal: cry がエラーになる
   {
     editor: editor09_fix,
     terminal: terminal17,
-    opacity: 0.6,
+    opacity: 0,
   },
   {
     editor: editor09_fix,
     terminal: terminal18,
-    opacity: 0.6,
+    opacity: 0,
   },
   // chat: 感情を削除する
   {
     editor: editor09_fix,
     ai: ai01,
-    opacity: 0.6,
+    opacity: 0.01,
   },
   // terminal: 感情を削除する
   {
     editor: editor09_fix,
     terminal: terminal19,
-    opacity: 0.7,
+    opacity: 0.05,
   },
   // Emotion が消える
   {
     editor: editor11,
-    opacity: 0.7,
+    opacity: 0.05,
   },
   {
     editor: editor11_fix,
-    opacity: 0.7,
+    opacity: 0.1,
   },
   // ai: 行動が削除される
   {
     editor: editor11_fix,
     ai: ai02,
-    opacity: 0.7,
+    opacity: 0.2,
   },
   // terminal: 行動が削除される
   {
     editor: editor11_fix,
     terminal: terminal20,
-    opacity: 0.7,
+    opacity: 0.2,
   },
   // Action が消える
   {
     editor: editor12,
-    opacity: 0.8,
+    opacity: 0.2,
   },
   {
     editor: editor12_fix,
-    opacity: 0.8,
+    opacity: 0.2,
   },
   // ai: ユーザーが消える
   {
     editor: editor12_fix,
     ai: ai03,
-    opacity: 0.7,
+    opacity: 0.2,
   },
   // terminal: ユーザーが消える
   {
     editor: editor12_fix,
     terminal: terminal21,
-    opacity: 0.7,
+    opacity: 0.3,
   },
   // User が消える
   {
     editor: editor13,
-    opacity: 0.9,
+    opacity: 0.4,
   },
   // 何もかもなくなる（虚無）
   {
     editor: editor14,
-    opacity: 1,
+    opacity: 0.5,
   },
 ] as SceneType[];
