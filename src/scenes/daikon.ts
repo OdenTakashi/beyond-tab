@@ -22,7 +22,6 @@ import editor13 from "./editor/daikon_13";
 import editor14 from "./editor/daikon_14";
 import terminal01 from "./terminal/terminal_01";
 import terminal02 from "./terminal/terminal_02";
-import terminal03 from "./terminal/terminal_03";
 import terminal04 from "./terminal/terminal_04";
 import terminal05 from "./terminal/terminal_05";
 import terminal06 from "./terminal/terminal_06";
@@ -38,10 +37,6 @@ import terminal15 from "./terminal/terminal_15";
 import terminal16 from "./terminal/terminal_16";
 import terminal17 from "./terminal/terminal_17";
 import terminal18 from "./terminal/terminal_18";
-import terminal19 from "./terminal/terminal_19";
-import terminal20 from "./terminal/terminal_20";
-import terminal21 from "./terminal/terminal_21";
-import ai00 from "./ai/ai_00";
 
 export default [
   // ユーザを作る
