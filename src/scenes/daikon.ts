@@ -4,8 +4,6 @@ import editor01_fix from "./editor/daikon_01_fix";
 import editor02 from "./editor/daikon_02";
 import editor03 from "./editor/daikon_03";
 import editor03_fix from "./editor/daikon_03_fix";
-import editor04 from "./editor/daikon_04";
-import editor04_fix from "./editor/daikon_04_fix";
 import editor05 from "./editor/daikon_05";
 import editor05_fix from "./editor/daikon_05_fixed";
 import editor06 from "./editor/daikon_06";
@@ -25,8 +23,6 @@ import editor14 from "./editor/daikon_14";
 import terminal01 from "./terminal/terminal_01";
 import terminal02 from "./terminal/terminal_02";
 import terminal03 from "./terminal/terminal_03";
-import terminal04 from "./terminal/terminal_04";
-import terminal05 from "./terminal/terminal_05";
 import terminal06 from "./terminal/terminal_06";
 import terminal07 from "./terminal/terminal_07";
 import terminal08 from "./terminal/terminal_08";
@@ -38,8 +34,6 @@ import terminal13 from "./terminal/terminal_13";
 import terminal14 from "./terminal/terminal_14";
 import terminal15 from "./terminal/terminal_15";
 import terminal16 from "./terminal/terminal_16";
-import terminal17 from "./terminal/terminal_17";
-import terminal18 from "./terminal/terminal_18";
 import terminal19 from "./terminal/terminal_19";
 import terminal20 from "./terminal/terminal_20";
 import terminal21 from "./terminal/terminal_21";
@@ -86,23 +80,6 @@ export default [
   {
     editor: editor03_fix,
     terminal: terminal03,
-    opacity: 0,
-  },
-  // cry を定義
-  {
-    editor: editor04,
-    terminal: terminal04,
-    opacity: 0,
-  },
-  // terminal: 泣く
-  {
-    editor: editor04_fix,
-    terminal: terminal04,
-    opacity: 0,
-  },
-  {
-    editor: editor04_fix,
-    terminal: terminal05,
     opacity: 0,
   },
   // coding を定義
@@ -191,7 +168,7 @@ export default [
     terminal: terminal14,
     opacity: 0,
   },
-  // laugh, cry に reason が必要になる
+  // laugh に reason が必要になる
   {
     editor: editor09,
     opacity: 0,
@@ -209,17 +186,6 @@ export default [
   {
     editor: editor09_fix,
     terminal: terminal16,
-    opacity: 0,
-  },
-  // terminal: cry がエラーになる
-  {
-    editor: editor09_fix,
-    terminal: terminal17,
-    opacity: 0,
-  },
-  {
-    editor: editor09_fix,
-    terminal: terminal18,
     opacity: 0,
   },
   // chat: 感情を削除する

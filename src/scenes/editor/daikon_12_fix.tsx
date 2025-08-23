@@ -107,45 +107,6 @@ export default [
     ),
   },
   {
-    value: <></>,
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="def" />
-        <Token value="cry" />
-        <Token value="(" />
-        <Token value="reason" />
-        <Token value=")" />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Tab />
-        <Token value="Emotion" />
-        <Token value="." />
-        <Token value="new" />
-        <Token value="." />
-        <Token value="cry" />
-        <Token value="(" />
-        <Token value="reason" />
-        <Token value=")" />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="end" />
-      </>
-    ),
-  },
-  {
     value: (
       <>
         <Token value="end" />

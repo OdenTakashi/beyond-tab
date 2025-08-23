@@ -101,39 +101,6 @@ export default [
     ),
   },
   {
-    value: <></>,
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="def" isSuggestion />
-        <Token value="cry" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Tab />
-        <Token value="Emotion" isSuggestion />
-        <Token value="." isSuggestion />
-        <Token value="new" isSuggestion />
-        <Token value="." isSuggestion />
-        <Token value="cry" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="end" isSuggestion />
-      </>
-    ),
-  },
-  {
     value: (
       <>
         <Token value="end" />
@@ -175,36 +142,6 @@ export default [
       <>
         <Tab />
         <Token value="end" />
-      </>
-    ),
-  },
-  {
-    value: <></>,
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="def" isSuggestion />
-        <Token value="cry" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Tab />
-        <Token value="puts" isSuggestion />
-        <Token value="'しくしく'" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="end" isSuggestion />
       </>
     ),
   },
