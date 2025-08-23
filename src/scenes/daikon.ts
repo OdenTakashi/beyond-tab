@@ -17,11 +17,14 @@ import editor08_fix from "./editor/daikon_08_fix";
 import editor09 from "./editor/daikon_09";
 import editor09_fix from "./editor/daikon_09_fix";
 import editor11 from "./editor/daikon_11";
+import editor11_fix from "./editor/daikon_11_fix";
 import editor12 from "./editor/daikon_12";
+import editor12_fix from "./editor/daikon_12_fix";
 import editor13 from "./editor/daikon_13";
 import editor14 from "./editor/daikon_14";
 import terminal01 from "./terminal/terminal_01";
 import terminal02 from "./terminal/terminal_02";
+import terminal03 from "./terminal/terminal_03";
 import terminal04 from "./terminal/terminal_04";
 import terminal05 from "./terminal/terminal_05";
 import terminal06 from "./terminal/terminal_06";
@@ -37,6 +40,12 @@ import terminal15 from "./terminal/terminal_15";
 import terminal16 from "./terminal/terminal_16";
 import terminal17 from "./terminal/terminal_17";
 import terminal18 from "./terminal/terminal_18";
+import terminal19 from "./terminal/terminal_19";
+import terminal20 from "./terminal/terminal_20";
+import terminal21 from "./terminal/terminal_21";
+import ai01 from "./ai/ai_01";
+import ai02 from "./ai/ai_02";
+import ai03 from "./ai/ai_03";
 
 export default [
   // ユーザを作る
@@ -72,6 +81,11 @@ export default [
   {
     editor: editor03_fix,
     terminal: terminal02,
+    opacity: 0,
+  },
+  {
+    editor: editor03_fix,
+    terminal: terminal03,
     opacity: 0,
   },
   // cry を定義
@@ -160,72 +174,116 @@ export default [
   // 感情が nil になる
   {
     editor: editor08,
-    opacity: 0.1,
+    opacity: 0,
   },
   // terminal: 感情が nil になる（coding）
   {
     editor: editor08_fix,
-    opacity: 0.1,
+    opacity: 0,
   },
   {
     editor: editor08_fix,
     terminal: terminal13,
-    opacity: 0.1,
+    opacity: 0,
   },
   {
     editor: editor08_fix,
     terminal: terminal14,
-    opacity: 0.2,
+    opacity: 0,
   },
   // laugh, cry に reason が必要になる
   {
     editor: editor09,
-    opacity: 0.2,
+    opacity: 0,
   },
   // terminal: laugh がエラーになる
   {
     editor: editor09_fix,
-    opacity: 0.3,
+    opacity: 0,
   },
   {
     editor: editor09_fix,
     terminal: terminal15,
-    opacity: 0.4,
+    opacity: 0,
   },
   {
     editor: editor09_fix,
     terminal: terminal16,
-    opacity: 0.5,
+    opacity: 0,
   },
   // terminal: cry がエラーになる
   {
     editor: editor09_fix,
     terminal: terminal17,
-    opacity: 0.6,
+    opacity: 0,
   },
   {
     editor: editor09_fix,
     terminal: terminal18,
-    opacity: 0.6,
+    opacity: 0,
+  },
+  // chat: 感情を削除する
+  {
+    editor: editor09_fix,
+    ai: ai01,
+    opacity: 0.01,
+  },
+  // terminal: 感情を削除する
+  {
+    editor: editor09_fix,
+    terminal: terminal19,
+    opacity: 0.05,
   },
   // Emotion が消える
   {
     editor: editor11,
-    opacity: 0.7,
+    opacity: 0.05,
+  },
+  {
+    editor: editor11_fix,
+    opacity: 0.1,
+  },
+  // ai: 行動が削除される
+  {
+    editor: editor11_fix,
+    ai: ai02,
+    opacity: 0.2,
+  },
+  // terminal: 行動が削除される
+  {
+    editor: editor11_fix,
+    terminal: terminal20,
+    opacity: 0.2,
   },
   // Action が消える
   {
     editor: editor12,
-    opacity: 0.8,
+    opacity: 0.2,
+  },
+  {
+    editor: editor12_fix,
+    opacity: 0.2,
+  },
+  // ai: ユーザーが消える
+  {
+    editor: editor12_fix,
+    ai: ai03,
+    opacity: 0.2,
+  },
+  // terminal: ユーザーが消える
+  {
+    editor: editor12_fix,
+    terminal: terminal21,
+    opacity: 0.3,
   },
   // User が消える
   {
     editor: editor13,
-    opacity: 0.9,
+    opacity: 0.4,
   },
   // 何もかもなくなる（虚無）
   {
     editor: editor14,
-    opacity: 1,
+    opacity: 0.5,
   },
 ] as SceneType[];
