@@ -1,25 +1,36 @@
 import type { LineType } from "../../types/LineValue";
 
-export const Editor = ({ lines }: { lines: LineType[] }) => {
+export const Editor = ({ lines, opacity }: { lines: LineType[], opacity: number }) => {
   return (
 <div 
   style={{ 
+    position: "relative", 
     height: "100%", 
     width: "100%", 
     color: "white", 
     overflowY: "scroll", 
     overflowX: "auto", 
-    backgroundColor: "rgba(30, 30, 30, 0.9)", // 元の背景色を半透明に
-    backgroundImage: "url('/src/assets/kyomu.png')", 
+    backgroundColor: "#1e1e1e", 
     backgroundRepeat: "no-repeat",
     backgroundPosition: "bottom",
     backgroundSize: "100% auto", 
-    backgroundBlendMode: "multiply", // 背景画像と背景色をブレンド
-
   }} 
 >
+<div 
+  style={{ 
+    position: "absolute",
+    height: "100%", 
+    width: "100%", 
+    backgroundImage: "url('/src/assets/kyomu.png')", 
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "bottom",
+    backgroundSize: "50% auto", 
+    filter: `opacity(${opacity ?? 0})`, // 💡 ここで背景画像にのみ透明度を適用
+  }} 
+></div>
       <div
         style={{
+          position: "absolute",
           width: "100%",
           display: "flex",
           flexDirection: "column",

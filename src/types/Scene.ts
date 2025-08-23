@@ -9,4 +9,6 @@ export type SceneType = {
   ai?: ChatType[];
   // ターミナルの出力
   terminal?: TerminalValue[];
+
+  opacity: number;
 };

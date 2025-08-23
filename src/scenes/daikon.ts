@@ -29,85 +29,106 @@ export default [
     editor: editor01,
     ai: ai00,
     terminal: terminal01,
+    opacity: 0,
   },
   {
     editor: editor02,
     terminal: terminal02,
+    opacity: 0,
   },
   {
     editor: editor02,
     terminal: terminal03,
+    opacity: 0,
   },
   {
     editor: editor02,
     terminal: terminal04,
+    opacity: 0,
   },
   {
     editor: editor02,
     terminal: terminal05,
+    opacity: 0,
   },
   {
     editor: editor02,
     terminal: terminal06,
+    opacity: 0,
   },
   {
     editor: editor02,
     terminal: terminal07,
+    opacity: 0,
   },
   {
     editor: editor02,
     terminal: terminal08,
+    opacity: 0,
   },
   {
     editor: editor02,
     terminal: terminal09,
+    opacity: 0,
   },
   {
     editor: editor02,
     terminal: terminal10,
+    opacity: 0,
   },
   {
     editor: editor02,
     terminal: terminal11,
+    opacity: 0,
   },
   {
     editor: editor02,
     terminal: terminal12,
+    opacity: 0.1,
   },
   {
     editor: editor02,
     terminal: terminal13,
+    opacity: 0.2,
   },
   {
     editor: editor02,
     terminal: terminal14,
+    opacity: 0.3,
   },
   {
     editor: editor02,
     terminal: terminal15,
+    opacity: 0.4,
   },
   {
     editor: editor02,
     terminal: terminal16,
+    opacity: 0.5,
   },
   {
     editor: editor02,
     terminal: terminal17,
+    opacity: 0.6,
   },
   {
     editor: editor02,
     terminal: terminal18,
+    opacity: 0.7,
   },
   {
     editor: editor02,
     terminal: terminal19,
+    opacity: 0.8,
   },
   {
     editor: editor02,
     terminal: terminal20,
+    opacity: 0.9,
   },
   {
     editor: editor02,
     terminal: terminal21,
+    opacity: 1,
   },
 ] as SceneType[];
