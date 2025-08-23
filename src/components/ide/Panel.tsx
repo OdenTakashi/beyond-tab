@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { Colors } from "../../constants/Colors";
+import { SimpleTerminal } from "./SimpleTerminal";
 
 interface PanelTab {
   id: string;
@@ -185,7 +186,7 @@ export const Panel = ({
       </div>
 
       {/* Content Area */}
-      <div style={{ flex: 1, overflow: "auto" }}>
+      <div style={{ flex: 1, overflow: "hidden" }}>
         <PanelContent activeTab={activeTab} />
       </div>
     </div>
@@ -317,52 +318,7 @@ const PanelContent = ({ activeTab }: { activeTab: string }) => {
           </div>
         );
       case "terminal":
-        return (
-          <div
-            style={{
-              padding: "12px",
-              fontFamily: "Monaco, 'Cascadia Code', 'Roboto Mono', monospace",
-              fontSize: "13px",
-              lineHeight: "1.4",
-              color: Colors.ide.panel.text,
-            }}
-          >
-            <div style={{ color: "#569cd6" }}>Attaching to app-1</div>
-            <div style={{ color: "#4ec9b0" }}>
-              app-1 | <span style={{ color: Colors.ide.panel.text }}>yarn run v1.22.22</span>
-            </div>
-            <div style={{ color: "#4ec9b0" }}>
-              app-1 | <span style={{ color: Colors.ide.panel.text }}>$ vite --host</span>
-            </div>
-            <div style={{ color: "#4ec9b0" }}>app-1 |</div>
-            <div style={{ color: "#4ec9b0" }}>
-              app-1 |{" "}
-              <span style={{ color: Colors.ide.panel.text }}>VITE v7.1.3 ready in 94 ms</span>
-            </div>
-            <div style={{ color: "#4ec9b0" }}>app-1 |</div>
-            <div style={{ color: "#4ec9b0" }}>
-              app-1 |{" "}
-              <span style={{ color: Colors.ide.panel.text }}>➜ Local: http://localhost:5173/</span>
-            </div>
-            <div style={{ color: "#4ec9b0" }}>
-              app-1 |{" "}
-              <span style={{ color: Colors.ide.panel.text }}>
-                ➜ Network: http://192.168.107.2:5173/
-              </span>
-            </div>
-            <div style={{ color: "#4ec9b0" }}>
-              app-1 |{" "}
-              <span style={{ color: "#ffd700" }}>
-                1:23:10 PM [vite] (client) hmr update /src/components/ide/Tab.tsx
-              </span>
-            </div>
-            <div style={{ marginTop: "12px", display: "flex", alignItems: "center" }}>
-              <span style={{ color: Colors.ide.panel.textMuted, marginRight: "8px" }}>
-                ⌘K to generate a command
-              </span>
-            </div>
-          </div>
-        );
+        return <SimpleTerminal />;
       case "ports":
         return (
           <div style={{ padding: "16px" }}>
@@ -406,5 +362,5 @@ const PanelContent = ({ activeTab }: { activeTab: string }) => {
     }
   };
 
-  return <div style={{ height: "100%", overflow: "auto" }}>{renderContent()}</div>;
+  return <div style={{ height: "100%", overflow: "hidden" }}>{renderContent()}</div>;
 };
