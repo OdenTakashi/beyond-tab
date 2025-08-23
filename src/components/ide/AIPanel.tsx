@@ -44,6 +44,7 @@ export const AIPanel = () => {
     },
   ]);
   const [inputMessage, setInputMessage] = useState("");
+  const [isComposing, setIsComposing] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -56,7 +57,7 @@ export const AIPanel = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!inputMessage.trim()) return;
+    if (!inputMessage.trim() || isComposing) return;
 
     const newMessage: Message = {
       id: Date.now().toString(),
@@ -246,6 +247,8 @@ export const AIPanel = () => {
               <textarea
                 value={inputMessage}
                 onChange={e => setInputMessage(e.target.value)}
+                onCompositionStart={() => setIsComposing(true)}
+                onCompositionEnd={() => setIsComposing(false)}
                 placeholder="Plan, search, build anything"
                 style={{
                   width: "100%",
@@ -264,7 +267,7 @@ export const AIPanel = () => {
                   overflowY: "auto",
                 }}
                 onKeyDown={e => {
-                  if (e.key === "Enter" && !e.shiftKey) {
+                  if (e.key === "Enter" && !e.shiftKey && !isComposing) {
                     e.preventDefault();
                     handleSubmit(e);
                   }
