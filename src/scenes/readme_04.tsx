@@ -1,7 +1,7 @@
 import { Token } from "../components/ide/Token";
 import type { SceneType } from "../types/Scene";
 
-export const sceneReadme: SceneType = {
+export default {
   lines: [
     {
       value: (
@@ -177,16 +177,19 @@ export const sceneReadme: SceneType = {
     {
       value: (
         <>
-          <Token value="# 最後に" />
+          <Token value="# 最後に" isSuggestion />
         </>
       ),
     },
     {
       value: (
         <>
-          <Token value="このアプリが、あなたのプログラミングライフに、新たな気づきと笑いをもたらすことを願っています。" />
+          <Token
+            value="このアプリが、あなたのプログラミングライフに、新たな気づきと笑いをもたらすことを願っています。"
+            isSuggestion
+          />
         </>
       ),
     },
   ],
-};
+} as SceneType;
