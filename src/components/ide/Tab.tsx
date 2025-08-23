@@ -1,14 +1,3 @@
-import { useState, useEffect } from "react";
-
-interface TabItem {
-  id: string;
-  name: string;
-  icon: React.ReactNode;
-  isActive: boolean;
-  isModified: boolean;
-  isCloseable: boolean;
-}
-
 interface TabProps {
   selectedFiles?: string[];
   onTabClose?: (closedFileName: string) => void;
