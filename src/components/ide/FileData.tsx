@@ -8,7 +8,13 @@ interface FileDataProps {
   onFileClick?: (fileName: string) => void;
 }
 
-export const FileData = ({ fileName, iconImage, isFolder = false, children, onFileClick }: FileDataProps) => {
+export const FileData = ({
+  fileName,
+  iconImage,
+  isFolder = false,
+  children,
+  onFileClick,
+}: FileDataProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleFileClick = (fileName: string) => {
@@ -17,7 +23,7 @@ export const FileData = ({ fileName, iconImage, isFolder = false, children, onFi
     } else if (fileName === "oden.html") {
       console.log("hello2");
     }
-    
+
     // 親コンポーネントにファイルクリックを通知
     if (onFileClick) {
       onFileClick(fileName);

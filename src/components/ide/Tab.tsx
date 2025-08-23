@@ -17,17 +17,21 @@ interface TabProps {
 export const Tab = ({ selectedFiles = [], onTabClose }: TabProps) => {
   // デバッグ用ログ
   console.log("Tab component - selectedFiles:", selectedFiles);
-  
+
   // selectedFilesが変更されたときにタブを更新
   const tabs = selectedFiles.map((fileName, index) => {
     const isActive = index === selectedFiles.length - 1; // 最後に選択されたファイルをアクティブにする
-    
+
     // ファイル拡張子に基づいてアイコンを決定
     let icon: React.ReactNode = "📄";
-    if (fileName.endsWith('.md')) {
-      icon = <img src="/src/assets/readme.svg" alt="ruby" style={{ width: "16px", height: "16px" }} />;
-    } else if (fileName.endsWith('.oden')) {
-      icon = <img src="/src/assets/ruby.svg" alt="ruby" style={{ width: "16px", height: "16px" }} />;
+    if (fileName.endsWith(".md")) {
+      icon = (
+        <img src="/src/assets/readme.svg" alt="ruby" style={{ width: "16px", height: "16px" }} />
+      );
+    } else if (fileName.endsWith(".oden")) {
+      icon = (
+        <img src="/src/assets/ruby.svg" alt="ruby" style={{ width: "16px", height: "16px" }} />
+      );
     }
 
     return {
@@ -73,17 +77,17 @@ export const Tab = ({ selectedFiles = [], onTabClose }: TabProps) => {
     >
       {/* タブ一覧 */}
       <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
-        <div 
-          style={{ 
-            display: "flex", 
-            overflow: "auto", 
-            flex: 1, 
-            scrollbarWidth: "none", 
-            msOverflowStyle: "none" 
+        <div
+          style={{
+            display: "flex",
+            overflow: "auto",
+            flex: 1,
+            scrollbarWidth: "none",
+            msOverflowStyle: "none",
           }}
           className="hide-scrollbar"
         >
-          {tabs.map((tab) => (
+          {tabs.map(tab => (
             <div
               key={tab.id}
               style={{
@@ -106,10 +110,10 @@ export const Tab = ({ selectedFiles = [], onTabClose }: TabProps) => {
             >
               {/* アイコン */}
               <span style={{ fontSize: "14px" }}>{tab.icon}</span>
-              
+
               {/* ファイル名 */}
               <span style={{ fontWeight: "500" }}>{tab.name}</span>
-              
+
               {/* 変更状態のMアイコン */}
               {tab.isModified && (
                 <span
@@ -123,7 +127,7 @@ export const Tab = ({ selectedFiles = [], onTabClose }: TabProps) => {
                   M
                 </span>
               )}
-              
+
               {/* 閉じるボタン */}
               {tab.isCloseable && (
                 <button
@@ -142,14 +146,14 @@ export const Tab = ({ selectedFiles = [], onTabClose }: TabProps) => {
                     justifyContent: "center",
                     marginLeft: "8px",
                   }}
-                  onClick={(e) => {
+                  onClick={e => {
                     e.stopPropagation();
                     handleTabClose(tab.id);
                   }}
-                  onMouseEnter={(e) => {
+                  onMouseEnter={e => {
                     e.currentTarget.style.backgroundColor = "#3c3c3c";
                   }}
-                  onMouseLeave={(e) => {
+                  onMouseLeave={e => {
                     e.currentTarget.style.backgroundColor = "transparent";
                   }}
                 >
@@ -188,20 +192,30 @@ export const Tab = ({ selectedFiles = [], onTabClose }: TabProps) => {
             justifyContent: "center",
           }}
           title="ソースコントロール"
-          onMouseEnter={(e) => {
+          onMouseEnter={e => {
             e.currentTarget.style.backgroundColor = "#3c3c3c";
           }}
-          onMouseLeave={(e) => {
+          onMouseLeave={e => {
             e.currentTarget.style.backgroundColor = "transparent";
           }}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="5" cy="6" r="3"/>
-            <path d="M12 6h5a2 2 0 0 1 2 2v7"/>
-            <path d="m15 9-3-3 3-3"/>
-            <circle cx="19" cy="18" r="3"/>
-            <path d="M12 18H7a2 2 0 0 1-2-2V9"/>
-            <path d="m9 15 3 3-3 3"/>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="5" cy="6" r="3" />
+            <path d="M12 6h5a2 2 0 0 1 2 2v7" />
+            <path d="m15 9-3-3 3-3" />
+            <circle cx="19" cy="18" r="3" />
+            <path d="M12 18H7a2 2 0 0 1-2-2V9" />
+            <path d="m9 15 3 3-3 3" />
           </svg>
         </button>
 
@@ -222,16 +236,26 @@ export const Tab = ({ selectedFiles = [], onTabClose }: TabProps) => {
             justifyContent: "center",
           }}
           title="エディタを分割"
-          onMouseEnter={(e) => {
+          onMouseEnter={e => {
             e.currentTarget.style.backgroundColor = "#3c3c3c";
           }}
-          onMouseLeave={(e) => {
+          onMouseLeave={e => {
             e.currentTarget.style.backgroundColor = "transparent";
           }}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect width="18" height="18" x="3" y="3" rx="2"/>
-            <path d="M12 3v18"/>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <rect width="18" height="18" x="3" y="3" rx="2" />
+            <path d="M12 3v18" />
           </svg>
         </button>
 
@@ -252,10 +276,10 @@ export const Tab = ({ selectedFiles = [], onTabClose }: TabProps) => {
             justifyContent: "center",
           }}
           title="その他のオプション"
-          onMouseEnter={(e) => {
+          onMouseEnter={e => {
             e.currentTarget.style.backgroundColor = "#3c3c3c";
           }}
-          onMouseLeave={(e) => {
+          onMouseLeave={e => {
             e.currentTarget.style.backgroundColor = "transparent";
           }}
         >
