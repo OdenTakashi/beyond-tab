@@ -263,7 +263,7 @@ const Pane = ({
             overflow: "hidden",
           }}
         >
-          <Editor lines={editorContent} />
+          <Editor lines={editorContent} opacity={scene.opacity} />
         </div>
       </div>
       <Panel
