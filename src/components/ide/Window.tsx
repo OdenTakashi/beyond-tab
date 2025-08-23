@@ -14,7 +14,6 @@ export const IDEWindow = () => {
   const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
 
   const handleFileSelect = (files: string[]) => {
-    console.log("Window - handleFileSelect called with:", files);
 
     if (files.length === 1) {
       const fileName = files[0];
@@ -27,26 +26,20 @@ export const IDEWindow = () => {
         if (prev.includes(fileName)) {
           // 既に選択されている場合は、そのファイルを最後に移動（アクティブにする）
           newFiles = [...prev.filter(file => file !== fileName), fileName];
-          console.log(`Window - File already selected, reordering:`, newFiles);
         } else {
           // 新しく選択されていない場合は追加
           newFiles = [...prev, fileName];
-          console.log(`Window - New file selected, adding:`, newFiles);
         }
 
-        console.log("Window - Final selectedFiles:", newFiles);
         return newFiles;
       });
     }
   };
 
   const handleTabClose = (closedFileName: string) => {
-    console.log("Window - handleTabClose called with:", closedFileName);
-    console.log("Window - selectedFiles before:", selectedFiles);
     // タブが閉じられたファイルを選択されたファイルリストから削除
     setSelectedFiles(prev => {
       const newFiles = prev.filter(file => file !== closedFileName);
-      console.log("Window - selectedFiles after:", newFiles);
       return newFiles;
     });
   };

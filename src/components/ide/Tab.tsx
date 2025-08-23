@@ -15,8 +15,6 @@ interface TabProps {
 }
 
 export const Tab = ({ selectedFiles = [], onTabClose }: TabProps) => {
-  // デバッグ用ログ
-  console.log("Tab component - selectedFiles:", selectedFiles);
 
   // selectedFilesが変更されたときにタブを更新
   const tabs = selectedFiles.map((fileName, index) => {
@@ -43,8 +41,6 @@ export const Tab = ({ selectedFiles = [], onTabClose }: TabProps) => {
       isCloseable: true,
     };
   });
-
-  console.log("Tab component - generated tabs:", tabs);
 
   const handleTabClick = (tabId: string) => {
     // タブクリック時の処理は親コンポーネントで管理するため、ここでは何もしない
