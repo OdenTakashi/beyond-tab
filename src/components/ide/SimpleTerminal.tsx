@@ -23,6 +23,34 @@ export const SimpleTerminal = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
 
+  // ニヒルなディレクトリ名のパターン
+  const nihilDirectoryNames = [
+    "虚無の果て",
+    "意味なき場所",
+    "無価値な領域",
+    "絶望の住処",
+    "空虚な箱",
+    "無意味な点",
+  ];
+
+  const nihilAbsolutePaths = [
+    "/存在しない道/意味のない旅路/虚無の果て",
+    "/無価値な階層/絶望の深淵/意味なき場所",
+    "/空虚な構造/無意味な分岐/無価値な領域",
+    "/虚構の体系/偽りの秩序/絶望の住処",
+    "/無駄な階層/意味なき道筋/空虚な箱",
+    "/徒労の系譜/虚しき歩み/無意味な点",
+  ];
+
+  // 現在のニヒルなディレクトリ名を取得（セッション中は固定）
+  const [currentNihilDir] = useState(() => {
+    const index = Math.floor(Math.random() * nihilDirectoryNames.length);
+    return {
+      name: nihilDirectoryNames[index],
+      absolutePath: nihilAbsolutePaths[index],
+    };
+  });
+
   // 利用可能なコマンド定義
   const commands: Record<string, Command> = {
     help: {
@@ -65,31 +93,42 @@ export const SimpleTerminal = () => {
       name: "ls",
       description: "List files and directories",
       handler: () => [
-        "src/",
-        "public/",
-        "node_modules/",
-        "package.json",
-        "tsconfig.json",
-        "vite.config.ts",
-        "README.md",
-        "Dockerfile",
-        "docker-compose.yml",
+        "無駄な努力/",
+        "偽りの希望/",
+        "意味なき依存/",
+        "空虚な設定.json",
+        "虚構の型定義.json",
+        "無価値な構成.ts",
+        "読まれぬ文書.md",
+        "孤独な容器",
+        "絶望の編成.yml",
       ],
     },
     pwd: {
       name: "pwd",
       description: "Show current directory",
-      handler: () => ["/workspace/beyond-tab"],
+      handler: () => [currentNihilDir.absolutePath],
     },
     whoami: {
       name: "whoami",
       description: "Show current user",
-      handler: () => ["developer"],
+      handler: () => ["虚無に囚われし者"],
     },
     date: {
       name: "date",
       description: "Show current date and time",
-      handler: () => [new Date().toLocaleString()],
+      handler: () => {
+        const nihilTimes = [
+          "永遠に続く虚無の刻",
+          "意味を失った時の流れ",
+          "価値なき瞬間の連続",
+          "絶望が支配する今",
+          "空虚な時間の断片",
+          "無意味な秒針の音",
+        ];
+        const randomTime = nihilTimes[Math.floor(Math.random() * nihilTimes.length)];
+        return [randomTime];
+      },
     },
     echo: {
       name: "echo",
@@ -100,66 +139,66 @@ export const SimpleTerminal = () => {
       name: "dev-status",
       description: "Show development server status",
       handler: () => [
-        "✅ Development server: Running on http://localhost:5173",
-        "✅ Hot Module Replacement: Active",
-        "✅ TypeScript: No errors",
-        "📦 Bundle size: 2.3MB (dev)",
+        "💀 絶望のサーバー: 虚無のポート:5173で稼働中",
+        "🔥 無意味な置換: 常に動作（意味はない）",
+        "📝 TypeScript: エラーなし（価値もなし）",
+        "📦 虚無の塊: 2.3MBの無駄",
       ],
     },
     build: {
       name: "build",
       description: "Simulate build process",
       handler: () => [
-        "🔨 Building project...",
-        "📦 Bundling assets...",
-        "🎯 Optimizing for production...",
-        "✅ Build completed successfully!",
-        "📊 Bundle size: 145KB (gzipped)",
+        "🔨 無意味な構築を開始...",
+        "📦 虚無を束ねています...",
+        "🎯 絶望を最適化中...",
+        "💀 虚無の完成！（意味はない）",
+        "📊 無価値な塊: 145KB（圧縮された絶望）",
       ],
     },
     test: {
       name: "test",
       description: "Run tests",
       handler: () => [
-        "🧪 Running tests...",
-        "✅ All tests passed (12/12)",
-        "📊 Coverage: 85%",
-        "⏱️  Time: 2.34s",
+        "🧪 虚無のテストを実行中...",
+        "💀 全ての絶望が成功 (12/12)",
+        "📊 無意味な網羅率: 85%",
+        "⏱️  虚しい時間: 2.34秒",
       ],
     },
     "git-status": {
       name: "git-status",
       description: "Show git status",
       handler: () => [
-        "On branch feature/panel-resize-area",
-        "Your branch is up to date with 'origin/main'.",
+        "絶望のブランチ: feature/虚無への道",
+        "あなたの絶望は最新です（意味はない）",
         "",
-        "Changes not staged for commit:",
-        "  modified:   src/components/ide/Panel.tsx",
-        "  modified:   src/components/ide/Window.tsx",
+        "コミットされぬ変更（永遠に）:",
+        "  変更済み:   無駄な努力/虚無なパネル.tsx",
+        "  変更済み:   空虚な窓/意味なき表示.tsx",
         "",
-        "Untracked files:",
-        "  src/components/ide/SimpleTerminal.tsx",
+        "追跡されぬファイル（孤独に）:",
+        "  無価値なターミナル/絶望の実装.tsx",
       ],
     },
     "docker-ps": {
       name: "docker-ps",
       description: "Show running containers",
       handler: () => [
-        "CONTAINER ID   IMAGE          STATUS         PORTS                    NAMES",
-        "abc123def456   beyond-tab     Up 2 hours     0.0.0.0:5173->5173/tcp   beyond-tab-app-1",
-        "def456ghi789   postgres:14    Up 2 hours     5432/tcp                 beyond-tab-db-1",
+        "虚無ID        絶望イメージ    状態           無意味なポート           名前",
+        "虚無123絶望456  beyond-tab     絶望中 2時間   0.0.0.0:5173->5173/tcp   虚無なアプリ-1",
+        "絶望456虚無789  postgres:14    絶望中 2時間   5432/tcp                 意味なきDB-1",
       ],
     },
     version: {
       name: "version",
       description: "Show version information",
       handler: () => [
-        "Beyond Tab IDE v0.1.0",
-        "React: 19.1.1",
-        "TypeScript: 5.8.3",
-        "Vite: 7.1.2",
-        "Node.js: Unknown (Browser Environment)",
+        "絶望タブIDE v虚無.1.0",
+        "React: 19.1.1（無意味な更新）",
+        "TypeScript: 5.8.3（型なき絶望）",
+        "Vite: 7.1.2（高速な虚無）",
+        "Node.js: 不明（ブラウザの牢獄）",
       ],
     },
     cat: {
@@ -167,7 +206,7 @@ export const SimpleTerminal = () => {
       description: "Display file contents",
       handler: args => {
         if (args.length === 0) {
-          return ["cat: missing file operand"];
+          return ["虚無: ファイルが指定されていません（当然の結果）"];
         }
         const filename = args[0];
         const mockFiles: Record<string, string[]> = {
@@ -198,7 +237,7 @@ export const SimpleTerminal = () => {
         if (mockFiles[filename]) {
           return mockFiles[filename];
         } else {
-          return [`cat: ${filename}: No such file or directory`];
+          return [`虚無: ${filename}: そのようなファイルは存在しません（最初から無意味）`];
         }
       },
     },
@@ -217,7 +256,7 @@ export const SimpleTerminal = () => {
         const hours = Math.floor(uptime / 3600);
         const minutes = Math.floor((uptime % 3600) / 60);
         const seconds = uptime % 60;
-        return [`up ${hours}h ${minutes}m ${seconds}s`];
+        return [`絶望継続中 ${hours}時間 ${minutes}分 ${seconds}秒（意味なき時間）`];
       },
     },
   };
@@ -228,13 +267,13 @@ export const SimpleTerminal = () => {
       {
         id: 0,
         type: "output",
-        content: "🚀 Welcome to Beyond Tab Terminal!",
+        content: "💀 絶望タブターミナルへようこそ（意味はありません）",
         timestamp: new Date(),
       },
       {
         id: 1,
         type: "output",
-        content: 'Type "help" to see available commands.',
+        content: '"help"で無意味なコマンド一覧をご覧ください。',
         timestamp: new Date(),
       },
       {
@@ -286,7 +325,7 @@ export const SimpleTerminal = () => {
 
     // 空の入力の場合は改行のみ追加
     if (!trimmedInput) {
-      addLine("command", "$ ");
+      addLine("command", `${currentNihilDir.name}$ `);
       return;
     }
 
@@ -294,8 +333,8 @@ export const SimpleTerminal = () => {
     setCommandHistory(prev => [...prev, trimmedInput]);
     setHistoryIndex(-1);
 
-    // コマンドラインを表示
-    addLine("command", `$ ${trimmedInput}`);
+    // コマンドラインを表示（現在のディレクトリ付き）
+    addLine("command", `${currentNihilDir.name}$ ${trimmedInput}`);
 
     // コマンドを解析
     const [commandName, ...args] = trimmedInput.split(" ");
@@ -313,7 +352,10 @@ export const SimpleTerminal = () => {
         addLine("error", `Error executing command: ${error}`);
       }
     } else {
-      addLine("error", `Command not found: ${commandName}. Type "help" for available commands.`);
+      addLine(
+        "error",
+        `虚無なるコマンド: ${commandName} は存在しません。"help"で無意味なコマンド一覧を確認してください。`
+      );
     }
   };
 
@@ -397,7 +439,9 @@ export const SimpleTerminal = () => {
 
       {/* 現在の入力行 */}
       <div style={{ display: "flex", alignItems: "center", marginTop: "4px" }}>
-        <span style={{ color: Colors.ide.panel.textActive, marginRight: "8px" }}>$</span>
+        <span style={{ color: Colors.ide.panel.textActive, marginRight: "8px" }}>
+          {currentNihilDir.name}$
+        </span>
         <input
           ref={inputRef}
           type="text"
