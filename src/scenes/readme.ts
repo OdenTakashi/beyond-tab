@@ -10,33 +10,33 @@ import readme08 from "./editor/readme_08";
 import readme09 from "./editor/readme_09";
 
 export default [
-    {
-        editor: readme01,
-    },
-    {
-        editor: readme02,
-    },
-    {
-        editor: readme03,
-    },
-    {
-        editor: readme04,
-    },
-    
-    {
-        editor: readme05,
-    },
-    {
-        editor: readme06,
-    },
-    
-    {
-        editor: readme07,
-    },
-    {
-        editor: readme08,
-    },
-    {
-        editor: readme09,
-    },  
+  {
+    editor: readme01,
+  },
+  {
+    editor: readme02,
+  },
+  {
+    editor: readme03,
+  },
+  {
+    editor: readme04,
+  },
+
+  {
+    editor: readme05,
+  },
+  {
+    editor: readme06,
+  },
+
+  {
+    editor: readme07,
+  },
+  {
+    editor: readme08,
+  },
+  {
+    editor: readme09,
+  },
 ] as SceneType[];

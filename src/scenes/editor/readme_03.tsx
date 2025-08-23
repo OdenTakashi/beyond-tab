@@ -2,86 +2,86 @@ import { Token } from "../../components/ide/Token";
 import type { LineType } from "../../types/LineValue";
 
 export default [
-    {
-      value: (
-        <>
-          <Token value="# アプリ概要" />
-        </>
-      ),
-    },
-    {
-      value: (
-        <>
-          <Token value="## タイトル" />
-        </>
-      ),
-    },
-    {
-      value: (
-        <>
-          <Token value="Tabキーだけじゃだめですか" />
-        </>
-      ),
-    },
-    {
-      value: <></>,
-    },
-    {
-      value: (
-        <>
-          <Token value="## キャッチコピー" />
-        </>
-      ),
-    },
-    {
-      value: (
-        <>
-          <Token value="ある日プログラミングライフに革命が起こりました" />
-        </>
-      ),
-    },
-    {
-      value: (
-        <>
-          <Token value="自力でコーディングする時代はもう終わり！" />
-        </>
-      ),
-    },
-    {
-      value: (
-        <>
-          <Token value="ひたすらTabキーを叩きまくれ！" />
-        </>
-      ),
-    },
-    {
-      value: <></>,
-    },
-    {
-      value: (
-        <>
-          <Token value="## アプリ概要" />
-        </>
-      ),
-    },
-    {
-      value: (
-        <>
-          <Token value="このアプリは、ひたすらTabキーを連打するだけでコードが完成するという、かつてないコーディング体験を提供するシミュレーターです。" />
-        </>
-      ),
-    },
-    {
-      value: <></>,
-    },
-    {
-      value: (
-        <>
-          <Token
-            value="もはや、指先の運動能力こそが、最高のコードを生み出す鍵となるでしょう。タイピング速度、思考力、アルゴリズム設計…そんな常識は今日をもって捨て去ってください。"
-            isSuggestion
-          />
-        </>
-      ),
-    },
-  ] as LineType[];
+  {
+    value: (
+      <>
+        <Token value="# アプリ概要" />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Token value="## タイトル" />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Token value="Tabキーだけじゃだめですか" />
+      </>
+    ),
+  },
+  {
+    value: <></>,
+  },
+  {
+    value: (
+      <>
+        <Token value="## キャッチコピー" />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Token value="ある日プログラミングライフに革命が起こりました" />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Token value="自力でコーディングする時代はもう終わり！" />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Token value="ひたすらTabキーを叩きまくれ！" />
+      </>
+    ),
+  },
+  {
+    value: <></>,
+  },
+  {
+    value: (
+      <>
+        <Token value="## アプリ概要" />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Token value="このアプリは、ひたすらTabキーを連打するだけでコードが完成するという、かつてないコーディング体験を提供するシミュレーターです。" />
+      </>
+    ),
+  },
+  {
+    value: <></>,
+  },
+  {
+    value: (
+      <>
+        <Token
+          value="もはや、指先の運動能力こそが、最高のコードを生み出す鍵となるでしょう。タイピング速度、思考力、アルゴリズム設計…そんな常識は今日をもって捨て去ってください。"
+          isSuggestion
+        />
+      </>
+    ),
+  },
+] as LineType[];
