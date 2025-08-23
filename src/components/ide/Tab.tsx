@@ -92,7 +92,7 @@ export const Tab = ({ selectedFiles = [], onTabClose }: TabProps) => {
                 gap: "8px",
                 padding: "8px 12px",
                 backgroundColor: tab.isActive ? "#1e1e1e" : "transparent",
-                color: tab.isActive ? "#ffd700" : "#cccccc",
+                color: tab.isActive ? "#ffffff" : "#cccccc",
                 fontSize: "13px",
                 cursor: "pointer",
                 borderRight: "1px solid #3c3c3c",
