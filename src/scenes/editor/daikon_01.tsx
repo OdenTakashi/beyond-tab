@@ -1,5 +1,4 @@
-import { Tab } from "../../components/ide/Tab";
-import { Token } from "../../components/ide/Token";
+import { Tab, Token } from "../../components/ide/Token";
 import type { LineType } from "../../types/LineValue";
 
 export default [
@@ -15,43 +14,14 @@ export default [
     value: (
       <>
         <Tab />
-        <Token value="name" />
-        <Token value=":" />
-        <Token value="string" />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="age" isSuggestion />
-        <Token value=":" isSuggestion />
-        <Token value="number" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="address" isSuggestion />
-        <Token value=":" isSuggestion />
-        <Token value="string" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: <></>,
-  },
-  {
-    value: (
-      <>
-        <Tab />
         <Token value="def" />
-        <Token value="greet" />
+        <Token value="initialize" />
         <Token value="(" />
-        <Token value="name" isSuggestion />
+        <Token value="name" />
+        <Token value="," isSuggestion />
+        <Token value="age" isSuggestion />
+        <Token value="," isSuggestion />
+        <Token value="gender" isSuggestion />
         <Token value=")" />
       </>
     ),
@@ -61,8 +31,9 @@ export default [
       <>
         <Tab />
         <Tab />
-        <Token value="puts" isSuggestion />
-        <Token value='"Hello, #{name}!' isSuggestion />
+        <Token value="@name" />
+        <Token value="=" />
+        <Token value="name" />
       </>
     ),
   },
@@ -70,13 +41,28 @@ export default [
     value: (
       <>
         <Tab />
-        <Token value="end" isSuggestion />
+        <Tab />
+        <Token value="@age" isSuggestion />
+        <Token value="=" isSuggestion />
+        <Token value="age" isSuggestion />
       </>
     ),
   },
   {
     value: (
       <>
+        <Tab />
+        <Tab />
+        <Token value="@gender" isSuggestion />
+        <Token value="=" isSuggestion />
+        <Token value="gender" isSuggestion />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
         <Token value="end" />
       </>
     ),

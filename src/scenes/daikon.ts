@@ -1,6 +1,17 @@
 import type { SceneType } from "../types/Scene";
 import editor01 from "./editor/daikon_01";
 import editor02 from "./editor/daikon_02";
+import editor03 from "./editor/daikon_03";
+import editor04 from "./editor/daikon_04";
+import editor05 from "./editor/daikon_05";
+import editor06 from "./editor/daikon_06";
+import editor07 from "./editor/daikon_07";
+import editor08 from "./editor/daikon_08";
+import editor09 from "./editor/daikon_09";
+import editor11 from "./editor/daikon_11";
+import editor12 from "./editor/daikon_12";
+import editor13 from "./editor/daikon_13";
+import editor14 from "./editor/daikon_14";
 import terminal01 from "./terminal/terminal_01";
 import terminal02 from "./terminal/terminal_02";
 import terminal03 from "./terminal/terminal_03";
@@ -37,57 +48,61 @@ export default [
     opacity: 0,
   },
   {
-    editor: editor02,
+    editor: editor03,
     terminal: terminal03,
     opacity: 0,
   },
   {
-    editor: editor02,
+    editor: editor04,
     terminal: terminal04,
     opacity: 0,
   },
   {
-    editor: editor02,
+    editor: editor05,
     terminal: terminal05,
     opacity: 0,
   },
   {
-    editor: editor02,
+    editor: editor06,
     terminal: terminal06,
     opacity: 0,
   },
   {
-    editor: editor02,
+    editor: editor07,
     terminal: terminal07,
     opacity: 0,
   },
   {
-    editor: editor02,
+    editor: editor08,
+    terminal: terminal07,
+  },
+  {
+    editor: editor09,
     terminal: terminal08,
     opacity: 0,
   },
   {
-    editor: editor02,
+    editor: editor11,
     terminal: terminal09,
     opacity: 0,
   },
   {
-    editor: editor02,
+    editor: editor12,
     terminal: terminal10,
     opacity: 0,
   },
   {
-    editor: editor02,
+    editor: editor13,
     terminal: terminal11,
     opacity: 0,
   },
   {
-    editor: editor02,
+    editor: editor14,
     terminal: terminal12,
     opacity: 0.1,
   },
   {
-    editor: editor02,
+    editor: editor14,
     terminal: terminal13,
     opacity: 0.2,
   },

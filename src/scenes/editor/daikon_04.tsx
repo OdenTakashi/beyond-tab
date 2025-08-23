@@ -74,8 +74,41 @@ export default [
     value: (
       <>
         <Tab />
+        <Token value="def" />
+        <Token value="laugh" />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Tab />
+        <Token value="Emotion" />
+        <Token value="." />
+        <Token value="new" />
+        <Token value="." />
+        <Token value="laugh" />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Token value="end" />
+      </>
+    ),
+  },
+  {
+    value: <></>,
+  },
+  {
+    value: (
+      <>
+        <Tab />
         <Token value="def" isSuggestion />
-        <Token value="laugh" isSuggestion />
+        <Token value="cry" isSuggestion />
       </>
     ),
   },
@@ -88,7 +121,82 @@ export default [
         <Token value="." isSuggestion />
         <Token value="new" isSuggestion />
         <Token value="." isSuggestion />
-        <Token value="laugh" isSuggestion />
+        <Token value="cry" isSuggestion />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Token value="end" isSuggestion />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Token value="end" />
+      </>
+    ),
+  },
+  {
+    value: <></>,
+  },
+  {
+    value: (
+      <>
+        <Token value="class" />
+        <Token value="Emotion" />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Token value="def" />
+        <Token value="laugh" />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Tab />
+        <Token value="puts" />
+        <Token value="'wwwwwww'" />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Token value="end" />
+      </>
+    ),
+  },
+  {
+    value: <></>,
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Token value="def" isSuggestion />
+        <Token value="cry" isSuggestion />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Tab />
+        <Token value="puts" isSuggestion />
+        <Token value="'しくしく'" isSuggestion />
       </>
     ),
   },
