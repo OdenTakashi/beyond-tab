@@ -21,7 +21,7 @@ export const Editor = ({ lines, opacity }: { lines: LineType[]; opacity: number 
           position: "absolute",
           height: "100%",
           width: "100%",
-          backgroundImage: "url('/src/assets/kyomu.png')",
+          backgroundImage: "url('/kyomu.png')",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "bottom",
           backgroundSize: "50% auto",
