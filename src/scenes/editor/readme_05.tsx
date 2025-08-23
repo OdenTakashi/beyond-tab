@@ -1,8 +1,7 @@
-import { Token } from "../components/ide/Token";
-import type { SceneType } from "../types/Scene";
+import { Token } from "../../components/ide/Token";
+import type { LineType } from "../../types/LineValue";
 
-export default {
-  editor: [
+export default  [
     {
       value: (
         <>
@@ -88,12 +87,35 @@ export default {
     {
       value: (
         <>
+          <Token value="あなたの指先から生まれる、虚無とコードのハーモニーを心ゆくまでお楽しみください。" />
+        </>
+      ),
+    },
+    {
+      value: <></>,
+    },
+    {
+      value: (
+        <>
+          <Token value="# 遊び方" isSuggestion />
+        </>
+      ),
+    },
+    {
+      value: (
+        <>
+          <Token value="1. Tabを叩いてコーティングする" isSuggestion />
+        </>
+      ),
+    },
+    {
+      value: (
+        <>
           <Token
-            value="あなたの指先から生まれる、虚無とコードのハーモニーを心ゆくまでお楽しみください。"
+            value="controller/daikon.oden ファイルを開いてください。このファイルは、あなたのTabキー連打をただひたすらに待っています。あとは、指が筋肉痛になるまでTabキーを叩きまくってください。"
             isSuggestion
           />
         </>
       ),
     },
-  ],
-} as SceneType;
+  ] as LineType[];

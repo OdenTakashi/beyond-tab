@@ -1,8 +1,7 @@
-import { Token } from "../components/ide/Token";
-import type { SceneType } from "../types/Scene";
+import { Token } from "../../components/ide/Token";
+import type { LineType } from "../../types/LineValue";
 
-export default {
-  editor: [
+export default  [
     {
       value: (
         <>
@@ -177,5 +176,4 @@ export default {
         </>
       ),
     },
-  ],
-} as SceneType;
+  ] as LineType[];

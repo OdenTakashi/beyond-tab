@@ -1,10 +1,9 @@
-import { Tab } from "../components/ide/Tab";
-import { Token } from "../components/ide/Token";
-import type { SceneType } from "../types/Scene";
+import { Tab } from "../../components/ide/Tab";
+import { Token } from "../../components/ide/Token";
+import type { LineType } from "../../types/LineValue";
 
-export const scene02: SceneType = {
-  editor: [
-    {
+export default [
+  {
       value: (
         <>
           <Token value="class" />
@@ -82,5 +81,4 @@ export const scene02: SceneType = {
         </>
       ),
     },
-  ],
-};
+  ] as LineType[];

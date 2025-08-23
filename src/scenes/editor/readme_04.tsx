@@ -1,8 +1,7 @@
-import { Token } from "../components/ide/Token";
-import type { SceneType } from "../types/Scene";
+import { Token } from "../../components/ide/Token";
+import type { LineType } from "../../types/LineValue";
 
-export default {
-  editor: [
+export default  [
     {
       value: (
         <>
@@ -88,76 +87,11 @@ export default {
     {
       value: (
         <>
-          <Token value="あなたの指先から生まれる、虚無とコードのハーモニーを心ゆくまでお楽しみください。" />
-        </>
-      ),
-    },
-    {
-      value: <></>,
-    },
-    {
-      value: (
-        <>
-          <Token value="# 遊び方" />
-        </>
-      ),
-    },
-    {
-      value: (
-        <>
-          <Token value="1. Tabを叩いてコーティングする" />
-        </>
-      ),
-    },
-    {
-      value: (
-        <>
-          <Token value="controller/daikon.oden ファイルを開いてください。このファイルは、あなたのTabキー連打をただひたすらに待っています。あとは、指が筋肉痛になるまでTabキーを叩きまくってください。" />
-        </>
-      ),
-    },
-    {
-      value: <></>,
-    },
-    {
-      value: (
-        <>
-          <Token value="2. コードの真髄に触れる" isSuggestion />
-        </>
-      ),
-    },
-    {
-      value: (
-        <>
           <Token
-            value="一行、また一行とコードが生成されるたびに、あなたは「自分は何をしているのだろう？」という哲学的な問いに直面します。"
+            value="あなたの指先から生まれる、虚無とコードのハーモニーを心ゆくまでお楽しみください。"
             isSuggestion
           />
         </>
       ),
     },
-    {
-      value: (
-        <>
-          <Token
-            value="そこに論理的な意味はありません。ただ、コードがそこに生まれる。"
-            isSuggestion
-          />
-        </>
-      ),
-    },
-    {
-      value: (
-        <>
-          <Token
-            value="これこそが、このアプリが提示する「プログラミングの真髄」です。"
-            isSuggestion
-          />
-        </>
-      ),
-    },
-    {
-      value: <></>,
-    },
-  ],
-} as SceneType;
+  ] as LineType[];

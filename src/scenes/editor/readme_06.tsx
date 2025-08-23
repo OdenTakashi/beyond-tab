@@ -1,8 +1,7 @@
-import { Token } from "../components/ide/Token";
-import type { SceneType } from "../types/Scene";
+import { Token } from "../../components/ide/Token";
+import type { LineType } from "../../types/LineValue";
 
-export default {
-  editor: [
+export default  [
     {
       value: (
         <>
@@ -122,62 +121,7 @@ export default {
     {
       value: (
         <>
-          <Token value="2. コードの真髄に触れる" />
-        </>
-      ),
-    },
-    {
-      value: (
-        <>
-          <Token value="一行、また一行とコードが生成されるたびに、あなたは「自分は何をしているのだろう？」という哲学的な問いに直面します。" />
-        </>
-      ),
-    },
-    {
-      value: (
-        <>
-          <Token value="そこに論理的な意味はありません。ただ、コードがそこに生まれる。" />
-        </>
-      ),
-    },
-    {
-      value: (
-        <>
-          <Token value="これこそが、このアプリが提示する「プログラミングの真髄」です。" />
-        </>
-      ),
-    },
-    {
-      value: <></>,
-    },
-    {
-      value: (
-        <>
-          <Token value="3. 虚無になる" />
-        </>
-      ),
-    },
-    {
-      value: (
-        <>
-          <Token value="すべてを終えたとき、あなたは達成感と同時に、なんとも言えない虚無感に襲われます。" />
-        </>
-      ),
-    },
-    {
-      value: (
-        <>
-          <Token value="この虚無感こそが、あなたのプログラミング人生に新たなブレイクスルーをもたらすかもしれません。" />
-        </>
-      ),
-    },
-    {
-      value: <></>,
-    },
-    {
-      value: (
-        <>
-          <Token value="# 最後に" isSuggestion />
+          <Token value="2. コードの真髄に触れる" isSuggestion />
         </>
       ),
     },
@@ -185,11 +129,33 @@ export default {
       value: (
         <>
           <Token
-            value="このアプリが、あなたのプログラミングライフに、新たな気づきと笑いをもたらすことを願っています。"
+            value="一行、また一行とコードが生成されるたびに、あなたは「自分は何をしているのだろう？」という哲学的な問いに直面します。"
             isSuggestion
           />
         </>
       ),
     },
-  ],
-} as SceneType;
+    {
+      value: (
+        <>
+          <Token
+            value="そこに論理的な意味はありません。ただ、コードがそこに生まれる。"
+            isSuggestion
+          />
+        </>
+      ),
+    },
+    {
+      value: (
+        <>
+          <Token
+            value="これこそが、このアプリが提示する「プログラミングの真髄」です。"
+            isSuggestion
+          />
+        </>
+      ),
+    },
+    {
+      value: <></>,
+    },
+  ] as LineType[];

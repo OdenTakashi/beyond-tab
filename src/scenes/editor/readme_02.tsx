@@ -1,8 +1,7 @@
-import { Token } from "../components/ide/Token";
-import type { SceneType } from "../types/Scene";
+import type { LineType } from "../../types/LineValue";
+import { Token } from "../../components/ide/Token";
 
-export default {
-  editor: [
+export default [
     {
       value: (
         <>
@@ -61,29 +60,18 @@ export default {
     {
       value: (
         <>
-          <Token value="## アプリ概要" />
+          <Token value="## アプリ概要" isSuggestion />
         </>
       ),
-    },
-    {
-      value: (
-        <>
-          <Token value="このアプリは、ひたすらTabキーを連打するだけでコードが完成するという、かつてないコーディング体験を提供するシミュレーターです。" />
-        </>
-      ),
-    },
-    {
-      value: <></>,
     },
     {
       value: (
         <>
           <Token
-            value="もはや、指先の運動能力こそが、最高のコードを生み出す鍵となるでしょう。タイピング速度、思考力、アルゴリズム設計…そんな常識は今日をもって捨て去ってください。"
+            value="このアプリは、ひたすらTabキーを連打するだけでコードが完成するという、かつてないコーディング体験を提供するシミュレーターです。"
             isSuggestion
           />
         </>
       ),
     },
-  ],
-} as SceneType;
+  ] as LineType[];
