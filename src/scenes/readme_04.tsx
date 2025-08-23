@@ -171,5 +171,25 @@ export default {
         </>
       ),
     },
+    {
+      value: <></>,
+    },
+    {
+      value: (
+        <>
+          <Token value="# 最後に" isSuggestion />
+        </>
+      ),
+    },
+    {
+      value: (
+        <>
+          <Token
+            value="このアプリが、あなたのプログラミングライフに、新たな気づきと笑いをもたらすことを願っています。"
+            isSuggestion
+          />
+        </>
+      ),
+    },
   ],
 } as SceneType;
