@@ -1,3 +1,3 @@
 export const Tab = () => {
-  return <div>Tab</div>;
+  return <span style={{ width: 16 }} />;
 };
