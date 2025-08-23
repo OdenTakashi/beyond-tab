@@ -15,6 +15,7 @@ import sceneReadme04 from "../../scenes/readme_04";
 import sceneReadme05 from "../../scenes/readme_05";
 import { scene01 } from "../../scenes/01";
 import { scene02 } from "../../scenes/02";
+import nanimonodemonai from "../../scenes/nanimonodemonai";
 import type { ChatType } from "../../types/Chat";
 import type { LineType } from "../../types/LineValue";
 
@@ -122,9 +123,10 @@ export const IDEWindow = () => {
         return ODEN_SCENES[sceneIndex]?.editor || scene01.editor;
       }
       return scene01.editor;
+    } else {
+      // その他のファイルの場合はnanimonodemonai.tsxの内容を表示
+      return nanimonodemonai.editor;
     }
-    // その他のファイルの場合は現在のシーンのエディター内容を使用
-    return scene.editor;
   };
 
   return (
