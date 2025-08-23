@@ -14,9 +14,9 @@ export default [
     value: (
       <>
         <Tab />
-        <Token value="attr_reader" isSuggestion />
-        <Token value=":" isSuggestion />
-        <Token value="age" isSuggestion />{" "}
+        <Token value="attr_reader" />
+        <Token value=":" />
+        <Token value="age" />{" "}
       </>
     ),
   },

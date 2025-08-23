@@ -76,6 +76,9 @@ export default [
         <Tab />
         <Token value="def" />
         <Token value="laugh" />
+        <Token value="(" isSuggestion />
+        <Token value="reason" isSuggestion />
+        <Token value=")" isSuggestion />
       </>
     ),
   },
@@ -89,6 +92,9 @@ export default [
         <Token value="new" />
         <Token value="." />
         <Token value="laugh" />
+        <Token value="(" isSuggestion />
+        <Token value="reason" isSuggestion />
+        <Token value=")" isSuggestion />
       </>
     ),
   },
@@ -109,6 +115,9 @@ export default [
         <Tab />
         <Token value="def" />
         <Token value="cry" />
+        <Token value="(" isSuggestion />
+        <Token value="reason" isSuggestion />
+        <Token value=")" isSuggestion />
       </>
     ),
   },
@@ -122,6 +131,9 @@ export default [
         <Token value="new" />
         <Token value="." />
         <Token value="cry" />
+        <Token value="(" isSuggestion />
+        <Token value="reason" isSuggestion />
+        <Token value=")" isSuggestion />
       </>
     ),
   },
@@ -130,39 +142,6 @@ export default [
       <>
         <Tab />
         <Token value="end" />
-      </>
-    ),
-  },
-  {
-    value: <></>,
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="def" isSuggestion />
-        <Token value="coding" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Tab />
-        <Token value="Action" isSuggestion />
-        <Token value="." isSuggestion />
-        <Token value="new" isSuggestion />
-        <Token value="." isSuggestion />
-        <Token value="coding" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="end" isSuggestion />
       </>
     ),
   },
@@ -190,6 +169,41 @@ export default [
         <Tab />
         <Token value="def" />
         <Token value="laugh" />
+        <Token value="(" isSuggestion />
+        <Token value="reason" isSuggestion />
+        <Token value=")" isSuggestion />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Tab />
+        <Token value="unless" isSuggestion />
+        <Token value="reason" isSuggestion />
+        <Token value="." isSuggestion />
+        <Token value="present?" isSuggestion />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Tab />
+        <Tab />
+        <Token value="raise" isSuggestion />
+        <Token value='"Laughter requires a reason"' isSuggestion />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Tab />
+        <Token value="end" isSuggestion />
       </>
     ),
   },
@@ -220,6 +234,41 @@ export default [
         <Tab />
         <Token value="def" />
         <Token value="cry" />
+        <Token value="(" isSuggestion />
+        <Token value="reason" isSuggestion />
+        <Token value=")" isSuggestion />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Tab />
+        <Token value="unless" isSuggestion />
+        <Token value="reason" isSuggestion />
+        <Token value="." isSuggestion />
+        <Token value="present?" isSuggestion />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Tab />
+        <Tab />
+        <Token value="raise" isSuggestion />
+        <Token value='"Crying requires a reason"' isSuggestion />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Tab />
+        <Token value="end" isSuggestion />
       </>
     ),
   },
@@ -242,36 +291,6 @@ export default [
     ),
   },
   {
-    value: <></>,
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="def" isSuggestion />
-        <Token value="passion" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Tab />
-        <Token value="puts" isSuggestion />
-        <Token value="'やるぞぉ!'" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="end" isSuggestion />
-      </>
-    ),
-  },
-  {
     value: (
       <>
         <Token value="end" />
@@ -284,8 +303,8 @@ export default [
   {
     value: (
       <>
-        <Token value="class" isSuggestion />
-        <Token value="Action" isSuggestion />
+        <Token value="class" />
+        <Token value="Action" />
       </>
     ),
   },
@@ -293,8 +312,8 @@ export default [
     value: (
       <>
         <Tab />
-        <Token value="def" isSuggestion />
-        <Token value="coding" isSuggestion />
+        <Token value="def" />
+        <Token value="coding" />
       </>
     ),
   },
@@ -303,11 +322,11 @@ export default [
       <>
         <Tab />
         <Tab />
-        <Token value="Emotion" isSuggestion />
-        <Token value="." isSuggestion />
-        <Token value="new" isSuggestion />
-        <Token value="." isSuggestion />
-        <Token value="passion" isSuggestion />
+        <Token value="Emotion" />
+        <Token value="." />
+        <Token value="new" />
+        <Token value="." />
+        <Token value="passion" />
       </>
     ),
   },
@@ -315,14 +334,14 @@ export default [
     value: (
       <>
         <Tab />
-        <Token value="end" isSuggestion />
+        <Token value="end" />
       </>
     ),
   },
   {
     value: (
       <>
-        <Token value="end" isSuggestion />
+        <Token value="end" />
       </>
     ),
   },

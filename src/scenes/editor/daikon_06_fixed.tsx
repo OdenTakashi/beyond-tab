@@ -140,8 +140,13 @@ export default [
     value: (
       <>
         <Tab />
-        <Token value="def" isSuggestion />
-        <Token value="coding" isSuggestion />
+        <Token value="def" />
+        <Token value="coding" />
+        <Token value="(" />
+        <Token value="ai_agent" />
+        <Token value=":" />
+        <Token value="false" />
+        <Token value=")" />
       </>
     ),
   },
@@ -150,11 +155,8 @@ export default [
       <>
         <Tab />
         <Tab />
-        <Token value="Action" isSuggestion />
-        <Token value="." isSuggestion />
-        <Token value="new" isSuggestion />
-        <Token value="." isSuggestion />
-        <Token value="coding" isSuggestion />
+        <Token value="if" />
+        <Token value="ai_agent" />
       </>
     ),
   },
@@ -162,9 +164,63 @@ export default [
     value: (
       <>
         <Tab />
-        <Token value="end" isSuggestion />
+        <Tab />
+        <Tab />
+        <Token value="Action" />
+        <Token value="." />
+        <Token value="new" />
+        <Token value="." />
+        <Token value="coding" />
+        <Token value="(" />
+        <Token value="ai_agent" />
+        <Token value=":" />
+        <Token value="true" />
+        <Token value=")" />
       </>
     ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Tab />
+        <Token value="else" />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Tab />
+        <Tab />
+        <Token value="Action" />
+        <Token value="." />
+        <Token value="new" />
+        <Token value="." />
+        <Token value="coding" />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Tab />
+        <Token value="end" />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Token value="end" />
+      </>
+    ),
+  },
+  {
+    value: <></>,
   },
   {
     value: (
@@ -248,8 +304,13 @@ export default [
     value: (
       <>
         <Tab />
-        <Token value="def" isSuggestion />
-        <Token value="passion" isSuggestion />
+        <Token value="def" />
+        <Token value="passion" />
+        <Token value="(" />
+        <Token value="ai_agent" />
+        <Token value=":" />
+        <Token value="false" />
+        <Token value=")" />
       </>
     ),
   },
@@ -258,8 +319,8 @@ export default [
       <>
         <Tab />
         <Tab />
-        <Token value="puts" isSuggestion />
-        <Token value="'やるぞぉ!'" isSuggestion />
+        <Token value="if" />
+        <Token value="ai_agent" />
       </>
     ),
   },
@@ -267,13 +328,46 @@ export default [
     value: (
       <>
         <Tab />
-        <Token value="end" isSuggestion />
+        <Tab />
+        <Tab />
+        <Token value="puts" />
+        <Token value="'バイブコーディング最高!'" />
       </>
     ),
   },
   {
     value: (
       <>
+        <Tab />
+        <Tab />
+        <Token value="else" />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Tab />
+        <Tab />
+        <Token value="puts" />
+        <Token value="'やるぞぉ!'" />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
+        <Tab />
+        <Token value="end" />
+      </>
+    ),
+  },
+  {
+    value: (
+      <>
+        <Tab />
         <Token value="end" />
       </>
     ),
@@ -284,8 +378,8 @@ export default [
   {
     value: (
       <>
-        <Token value="class" isSuggestion />
-        <Token value="Action" isSuggestion />
+        <Token value="class" />
+        <Token value="Action" />
       </>
     ),
   },
@@ -293,8 +387,13 @@ export default [
     value: (
       <>
         <Tab />
-        <Token value="def" isSuggestion />
-        <Token value="coding" isSuggestion />
+        <Token value="def" />
+        <Token value="coding" />
+        <Token value="(" />
+        <Token value="ai_agent" />
+        <Token value=":" />
+        <Token value="false" />
+        <Token value=")" />
       </>
     ),
   },
@@ -303,11 +402,16 @@ export default [
       <>
         <Tab />
         <Tab />
-        <Token value="Emotion" isSuggestion />
-        <Token value="." isSuggestion />
-        <Token value="new" isSuggestion />
-        <Token value="." isSuggestion />
-        <Token value="passion" isSuggestion />
+        <Token value="Emotion" />
+        <Token value="." />
+        <Token value="new" />
+        <Token value="." />
+        <Token value="passion" />
+        <Token value="(" />
+        <Token value="ai_agent" />
+        <Token value=":" />
+        <Token value="ai_agent" />
+        <Token value=")" />
       </>
     ),
   },
@@ -315,14 +419,14 @@ export default [
     value: (
       <>
         <Tab />
-        <Token value="end" isSuggestion />
+        <Token value="end" />
       </>
     ),
   },
   {
     value: (
       <>
-        <Token value="end" isSuggestion />
+        <Token value="end" />
       </>
     ),
   },

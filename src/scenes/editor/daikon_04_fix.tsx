@@ -134,39 +134,6 @@ export default [
     ),
   },
   {
-    value: <></>,
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="def" isSuggestion />
-        <Token value="coding" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Tab />
-        <Token value="Action" isSuggestion />
-        <Token value="." isSuggestion />
-        <Token value="new" isSuggestion />
-        <Token value="." isSuggestion />
-        <Token value="coding" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="end" isSuggestion />
-      </>
-    ),
-  },
-  {
     value: (
       <>
         <Token value="end" />
@@ -242,87 +209,9 @@ export default [
     ),
   },
   {
-    value: <></>,
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="def" isSuggestion />
-        <Token value="passion" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Tab />
-        <Token value="puts" isSuggestion />
-        <Token value="'やるぞぉ!'" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="end" isSuggestion />
-      </>
-    ),
-  },
-  {
     value: (
       <>
         <Token value="end" />
-      </>
-    ),
-  },
-  {
-    value: <></>,
-  },
-  {
-    value: (
-      <>
-        <Token value="class" isSuggestion />
-        <Token value="Action" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="def" isSuggestion />
-        <Token value="coding" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Tab />
-        <Token value="Emotion" isSuggestion />
-        <Token value="." isSuggestion />
-        <Token value="new" isSuggestion />
-        <Token value="." isSuggestion />
-        <Token value="passion" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="end" isSuggestion />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Token value="end" isSuggestion />
       </>
     ),
   },
