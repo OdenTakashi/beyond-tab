@@ -7,29 +7,9 @@ import { scene01 } from "../../scenes/01";
 import { scene02 } from "../../scenes/02";
 import { useState } from "react";
 import type { SceneType } from "../../types/Scene";
+import type { LineType } from "../../types/LineValue";
 
-const scenes: SceneType[] = [
-  sceneReadme01,
-  sceneReadme02,
-  sceneReadme03,
-  sceneReadme04,
-  sceneReadme05,
-  scene01,
-  scene02,
-];
-
-export const Editor = () => {
-  const [sceneIndex, setSceneIndex] = useState(0);
-
-  // Tabキーが押されたときの処理
-  const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === "Tab") {
-      event.preventDefault(); // デフォルトのTab移動を防ぐ
-
-      setSceneIndex(prevIndex => (prevIndex < scenes.length - 1 ? prevIndex + 1 : 0));
-    }
-  };
-
+export const Editor = ({ lines }: { lines: LineType[] }) => {
   return (
     <div
       style={{
@@ -39,10 +19,8 @@ export const Editor = () => {
         display: "flex",
         flexDirection: "column",
       }}
-      tabIndex={0} // キーボードイベントを受け取れるようにする
-      onKeyDown={handleKeyDown}
     >
-      {scenes[sceneIndex].editor.map((line, index) => (
+      {lines.map((line, index) => (
         <div key={index} style={{ display: "flex", flexDirection: "row", gap: 4 }}>
           <Number rowNumber={index + 1} />
           <div style={{ display: "flex", flexDirection: "row", gap: 4 }}>{line.value}</div>

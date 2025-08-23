@@ -7,11 +7,41 @@ import { Panel } from "./Panel";
 import { Tab } from "./Tab";
 import { Editor } from "./Editor";
 import { AIPanel } from "./AIPanel";
+import type { SceneType } from "../../types/Scene";
+import sceneReadme01 from "../../scenes/readme_01";
+import sceneReadme02 from "../../scenes/readme_02";
+import sceneReadme03 from "../../scenes/readme_03";
+import sceneReadme04 from "../../scenes/readme_04";
+import sceneReadme05 from "../../scenes/readme_05";
+import { scene01 } from "../../scenes/01";
+import { scene02 } from "../../scenes/02";
+import type { ChatType } from "../../types/Chat";
+
+const scenes: SceneType[] = [
+  sceneReadme01,
+  sceneReadme02,
+  sceneReadme03,
+  sceneReadme04,
+  sceneReadme05,
+  scene01,
+  scene02,
+];
 
 export const IDEWindow = () => {
   const [panelHeight, setPanelHeight] = useState(200);
   const [isPanelResizing, setIsPanelResizing] = useState(false);
   const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
+  const [sceneIndex, setSceneIndex] = useState(0);
+  const scene = scenes[sceneIndex];
+
+  // Tabキーでシーンを切り替える
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Tab") {
+      event.preventDefault(); // デフォルトのTab移動を防ぐ
+
+      setSceneIndex(prevIndex => (prevIndex < scenes.length - 1 ? prevIndex + 1 : 0));
+    }
+  };
 
   const handleFileSelect = (files: string[]) => {
     if (files.length === 1) {
@@ -45,6 +75,8 @@ export const IDEWindow = () => {
 
   return (
     <div
+      tabIndex={0} // キーボードイベントを受け取れるようにする
+      onKeyDown={handleKeyDown}
       style={{
         display: "flex",
         flexDirection: "column",
@@ -62,6 +94,7 @@ export const IDEWindow = () => {
         </div>
         <div style={{ flex: 1, overflow: "hidden" }}>
           <Pane
+            scene={scene}
             panelHeight={panelHeight}
             onPanelHeightChange={setPanelHeight}
             isPanelResizing={isPanelResizing}
@@ -71,7 +104,7 @@ export const IDEWindow = () => {
           />
         </div>
         <div style={{ width: 300 }}>
-          <AIPanelWrapper />
+          <AIPanelWrapper scene={scene} />
         </div>
       </div>
     </div>
@@ -98,6 +131,7 @@ const PrimarySideBar = ({ onFileSelect }: { onFileSelect: (files: string[]) => v
 
 // 真ん中
 const Pane = ({
+  scene,
   panelHeight,
   onPanelHeightChange,
   isPanelResizing,
@@ -105,6 +139,7 @@ const Pane = ({
   selectedFiles,
   onTabClose,
 }: {
+  scene: SceneType;
   panelHeight: number;
   onPanelHeightChange: (height: number) => void;
   isPanelResizing: boolean;
@@ -168,7 +203,7 @@ const Pane = ({
         }}
       >
         <Tab selectedFiles={selectedFiles} onTabClose={onTabClose} />
-        <Editor />
+        <Editor lines={scene.editor} />
       </div>
       <Panel
         height={panelHeight}
@@ -182,7 +217,7 @@ const Pane = ({
 };
 
 // 右側：AIとチャットできるところ
-const AIPanelWrapper = () => {
+const AIPanelWrapper = ({ scene }: { scene: SceneType }) => {
   return (
     <div
       style={{
@@ -196,7 +231,7 @@ const AIPanelWrapper = () => {
         fontSize: "14px",
       }}
     >
-      <AIPanel />
+      <AIPanel chat={scene.ai} />
     </div>
   );
 };
