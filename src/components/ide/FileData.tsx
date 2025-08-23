@@ -55,16 +55,23 @@ export const FileData = ({ fileName, iconImage, isFolder = false, children }: Fi
         onClick={handleClick}
       >
         {isFolder ? (
-          <span
-            style={{
-              fontSize: "16px",
-              color: "#c5c5c5",
-              transform: isOpen ? "rotate(90deg)" : "rotate(0deg)",
-              transition: "transform 0.2s ease",
-            }}
-          >
-            &gt;
-          </span>
+          <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+            <span
+              style={{
+                fontSize: "16px",
+                color: "#c5c5c5",
+                transform: isOpen ? "rotate(90deg)" : "rotate(0deg)",
+                transition: "transform 0.2s ease",
+              }}
+            >
+              &gt;
+            </span>
+            <img
+              src={iconImage || "/src/assets/files.svg"}
+              alt="folder"
+              style={{ width: "16px", height: "16px" }}
+            />
+          </div>
         ) : (
           <img
             src={iconImage || "/src/assets/ruby.svg"}
