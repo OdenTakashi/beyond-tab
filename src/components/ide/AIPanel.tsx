@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 interface Message {
   id: string;
@@ -44,6 +44,15 @@ export const AIPanel = () => {
     },
   ]);
   const [inputMessage, setInputMessage] = useState("");
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -69,7 +78,6 @@ export const AIPanel = () => {
         width: "100%",
         backgroundColor: "#1e1e1e",
         borderLeft: `1px solid #2d2d30`,
-        overflow: "hidden",
       }}
     >
       {/* CHATヘッダー */}
@@ -162,10 +170,10 @@ export const AIPanel = () => {
       <div
         style={{
           flex: 1,
-          overflow: "auto",
-          display: "flex",
-          flexDirection: "column",
+          overflowY: "auto",
           backgroundColor: "#1e1e1e",
+          minHeight: 0,
+          maxHeight: "calc(100vh - 200px)",
         }}
       >
         {messages.map((message, index) => (
@@ -192,6 +200,7 @@ export const AIPanel = () => {
             </div>
           </div>
         ))}
+        <div ref={messagesEndRef} />
       </div>
 
       {/* 入力エリア */}
@@ -201,6 +210,7 @@ export const AIPanel = () => {
           borderTop: "1px solid #2d2d30",
           display: "flex",
           flexDirection: "column",
+          flexShrink: 0,
         }}
       >
         {/* フォーム部分 */}
@@ -208,7 +218,7 @@ export const AIPanel = () => {
           style={{
             padding: "8px",
             display: "flex",
-            alignItems: "flex-end",
+            alignItems: "stretch",
             gap: "8px",
           }}
         >
@@ -219,7 +229,7 @@ export const AIPanel = () => {
               border: "1px solid #3c3c3c",
               padding: "8px",
               flex: 1,
-              minHeight: "60px",
+              height: "60px",
               display: "flex",
               flexDirection: "column",
             }}
@@ -229,7 +239,8 @@ export const AIPanel = () => {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                flex: 1,
+                height: "100%",
+                justifyContent: "center",
               }}
             >
               <textarea
@@ -237,9 +248,9 @@ export const AIPanel = () => {
                 onChange={e => setInputMessage(e.target.value)}
                 placeholder="Plan, search, build anything"
                 style={{
-                  flex: 1,
+                  width: "100%",
                   minHeight: "44px",
-                  maxHeight: "120px",
+                  maxHeight: "44px",
                   padding: "0",
                   fontSize: "13px",
                   border: "none",
@@ -250,6 +261,7 @@ export const AIPanel = () => {
                   outline: "none",
                   resize: "none",
                   lineHeight: "1.4",
+                  overflowY: "auto",
                 }}
                 onKeyDown={e => {
                   if (e.key === "Enter" && !e.shiftKey) {
@@ -264,10 +276,10 @@ export const AIPanel = () => {
           <div
             style={{
               display: "flex",
-              alignItems: "center",
+              alignItems: "flex-end",
               gap: "2px",
               flexShrink: 0,
-              marginBottom: "4px",
+              paddingBottom: "8px",
             }}
           >
             <button
