@@ -36,7 +36,7 @@ export const IDEWindow = () => {
       } else if (currentFile === "daikon.oden") {
         maxSceneIndex = ODEN_SCENES.length - 1;
       } else {
-        maxSceneIndex = R - 1;
+        maxSceneIndex = README_SCENES.length - 1;
       }
 
       // 最大シーン数に達していない場合のみシーンを切り替え
