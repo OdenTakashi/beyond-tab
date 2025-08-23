@@ -76,80 +76,92 @@ export const Tab = ({ selectedFiles = [] }: TabProps) => {
     >
       {/* タブ一覧 */}
       <div style={{ display: "flex", flex: 1, overflow: "hidden" }}>
-        {tabs.map((tab) => (
-          <div
-            key={tab.id}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              padding: "8px 12px",
-              backgroundColor: tab.isActive ? "#1e1e1e" : "transparent",
-              color: tab.isActive ? "#ffd700" : "#cccccc",
-              fontSize: "13px",
-              cursor: "pointer",
-              borderRight: "1px solid #3c3c3c",
-              minWidth: "fit-content",
-              whiteSpace: "nowrap",
-              userSelect: "none",
-              position: "relative",
-            }}
-            onClick={() => handleTabClick(tab.id)}
-          >
-            {/* アイコン */}
-            <span style={{ fontSize: "14px" }}>{tab.icon}</span>
-            
-            {/* ファイル名 */}
-            <span style={{ fontWeight: "500" }}>{tab.name}</span>
-            
-            {/* 変更状態のMアイコン */}
-            {tab.isModified && (
-              <span
-                style={{
-                  color: "#ffd700",
-                  fontSize: "12px",
-                  fontWeight: "bold",
-                  marginLeft: "4px",
-                }}
-              >
-                M
-              </span>
-            )}
-            
-            {/* 閉じるボタン */}
-            {tab.isCloseable && (
-              <button
-                style={{
-                  background: "none",
-                  border: "none",
-                  color: "#cccccc",
-                  cursor: "pointer",
-                  padding: "2px",
-                  borderRadius: "3px",
-                  fontSize: "12px",
-                  width: "16px",
-                  height: "16px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginLeft: "8px",
-                }}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleTabClose(tab.id);
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = "#3c3c3c";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = "transparent";
-                }}
-              >
-                ×
-              </button>
-            )}
-          </div>
-        ))}
+        <div 
+          style={{ 
+            display: "flex", 
+            overflow: "auto", 
+            flex: 1, 
+            scrollbarWidth: "none", 
+            msOverflowStyle: "none" 
+          }}
+          className="hide-scrollbar"
+        >
+          {tabs.map((tab) => (
+            <div
+              key={tab.id}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                padding: "8px 12px",
+                backgroundColor: tab.isActive ? "#1e1e1e" : "transparent",
+                color: tab.isActive ? "#ffd700" : "#cccccc",
+                fontSize: "13px",
+                cursor: "pointer",
+                borderRight: "1px solid #3c3c3c",
+                minWidth: "fit-content",
+                whiteSpace: "nowrap",
+                userSelect: "none",
+                position: "relative",
+                flexShrink: 0,
+              }}
+              onClick={() => handleTabClick(tab.id)}
+            >
+              {/* アイコン */}
+              <span style={{ fontSize: "14px" }}>{tab.icon}</span>
+              
+              {/* ファイル名 */}
+              <span style={{ fontWeight: "500" }}>{tab.name}</span>
+              
+              {/* 変更状態のMアイコン */}
+              {tab.isModified && (
+                <span
+                  style={{
+                    color: "#ffd700",
+                    fontSize: "12px",
+                    fontWeight: "bold",
+                    marginLeft: "4px",
+                  }}
+                >
+                  M
+                </span>
+              )}
+              
+              {/* 閉じるボタン */}
+              {tab.isCloseable && (
+                <button
+                  style={{
+                    background: "none",
+                    border: "none",
+                    color: "#cccccc",
+                    cursor: "pointer",
+                    padding: "2px",
+                    borderRadius: "3px",
+                    fontSize: "12px",
+                    width: "16px",
+                    height: "16px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginLeft: "8px",
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleTabClose(tab.id);
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = "#3c3c3c";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = "transparent";
+                  }}
+                >
+                  ×
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* 右側のコントロールボタン */}
