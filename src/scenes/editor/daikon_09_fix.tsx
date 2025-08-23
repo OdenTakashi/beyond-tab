@@ -190,27 +190,6 @@ export default [
     ),
   },
   {
-    value: <></>,
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Tab />
-        <Token value="puts" />
-        <Token value="'しくしく'" />
-      </>
-    ),
-  },
-  {
-    value: (
-      <>
-        <Tab />
-        <Token value="end" />
-      </>
-    ),
-  },
-  {
     value: (
       <>
         <Token value="end" />
