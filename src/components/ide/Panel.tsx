@@ -31,7 +31,7 @@ interface PanelProps {
 }
 
 export const Panel = ({
-  height = 200,
+  height = 300,
   scene,
   onHeightChange,
   onResizeStateChange,

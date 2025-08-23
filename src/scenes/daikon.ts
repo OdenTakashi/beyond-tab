@@ -37,6 +37,7 @@ import terminal16 from "./terminal/terminal_16";
 import terminal19 from "./terminal/terminal_19";
 import terminal20 from "./terminal/terminal_20";
 import terminal21 from "./terminal/terminal_21";
+import terminal22 from "./terminal/terminal_22";
 import ai01 from "./ai/ai_01";
 import ai02 from "./ai/ai_02";
 import ai03 from "./ai/ai_03";
@@ -250,6 +251,11 @@ export default [
   // 何もかもなくなる（虚無）
   {
     editor: editor14,
+    opacity: 0.5,
+  },
+  {
+    editor: editor14,
+    terminal: terminal22,
     opacity: 0.5,
   },
 ] as SceneType[];
