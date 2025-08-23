@@ -1,4 +1,4 @@
-import type { TerminalValue } from "../types/TerminalValue";
+import type { TerminalValue } from "../../types/TerminalValue";
 
 export default [
   {
