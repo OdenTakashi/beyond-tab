@@ -101,7 +101,11 @@ export const FileExplorer = () => {
           {isOpen && (
             <div style={{ marginLeft: "12px", borderLeft: "1px solid #3c3c3c" }}>
               {/* controllers folder */}
-              <FileData fileName="controllers" isFolder={true} iconImage="/src/assets/folder-controller.svg">
+              <FileData
+                fileName="controllers"
+                isFolder={true}
+                iconImage="/src/assets/folder-controller.svg"
+              >
                 <FileData fileName="daikon.oden" iconImage="/src/assets/ruby.svg" />
                 <FileData fileName="konbu.oden" iconImage="/src/assets/ruby.svg" />
                 <FileData fileName="chikuwabu.oden" iconImage="/src/assets/ruby.svg" />
@@ -110,19 +114,19 @@ export const FileExplorer = () => {
                 <FileData fileName="konnyaku.oden" iconImage="/src/assets/ruby.svg" />
                 <FileData fileName="chikuwa.oden" iconImage="/src/assets/ruby.svg" />
               </FileData>
-              
+
               {/* models folder */}
               <FileData fileName="models" isFolder={true} iconImage="/src/assets/folder-model.svg">
                 <FileData fileName="user.oden" iconImage="/src/assets/ruby.svg" />
                 <FileData fileName="post.oden" iconImage="/src/assets/ruby.svg" />
               </FileData>
-              
+
               {/* views folder */}
               <FileData fileName="views" isFolder={true} iconImage="/src/assets/folder-view.svg">
                 <FileData fileName="index.oden" iconImage="/src/assets/ruby.svg" />
                 <FileData fileName="show.oden" iconImage="/src/assets/ruby.svg" />
               </FileData>
-              
+
               {/* README.md */}
               <FileData fileName="README.md" iconImage="/src/assets/readme.svg" />
             </div>

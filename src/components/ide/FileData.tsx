@@ -31,7 +31,7 @@ export const FileData = ({ fileName, iconImage, isFolder = false, children }: Fi
       handleFileClick(fileName);
     }
   };
-  
+
   return (
     <div>
       <div
@@ -81,12 +81,10 @@ export const FileData = ({ fileName, iconImage, isFolder = false, children }: Fi
         )}
         <span style={{ color: "#cccccc" }}>{fileName}</span>
       </div>
-      
+
       {/* フォルダの場合は子要素を表示 */}
       {isFolder && isOpen && children && (
-        <div style={{ marginLeft: "12px", borderLeft: "1px solid #3c3c3c" }}>
-          {children}
-        </div>
+        <div style={{ marginLeft: "12px", borderLeft: "1px solid #3c3c3c" }}>{children}</div>
       )}
     </div>
   );
