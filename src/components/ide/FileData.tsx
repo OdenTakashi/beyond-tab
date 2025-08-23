@@ -1,4 +1,6 @@
 import { useState } from "react";
+import filesSVG from "../../assets/files.svg";
+import rubyrSVG from "../../assets/ruby.svg";
 
 interface FileDataProps {
   fileName: string;
@@ -79,17 +81,13 @@ export const FileData = ({
               &gt;
             </span>
             <img
-              src={iconImage || "/src/assets/files.svg"}
+              src={iconImage || filesSVG}
               alt="folder"
               style={{ width: "16px", height: "16px" }}
             />
           </div>
         ) : (
-          <img
-            src={iconImage || "/src/assets/ruby.svg"}
-            alt="file"
-            style={{ width: "16px", height: "16px" }}
-          />
+          <img src={iconImage || rubyrSVG} alt="file" style={{ width: "16px", height: "16px" }} />
         )}
         <span style={{ color: "#cccccc" }}>{fileName}</span>
       </div>
