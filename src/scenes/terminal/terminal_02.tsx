@@ -4,5 +4,4 @@ export default [
   {
     value: "Me.lough",
   },
-
 ] as TerminalValue[];

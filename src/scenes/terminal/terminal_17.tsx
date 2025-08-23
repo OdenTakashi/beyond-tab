@@ -4,5 +4,4 @@ export default [
   {
     value: "Me.cry",
   },
-
 ] as TerminalValue[];

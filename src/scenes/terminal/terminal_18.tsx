@@ -4,5 +4,4 @@ export default [
   {
     value: "#=> Crying requires a reason (RuntimeError)",
   },
-
 ] as TerminalValue[];

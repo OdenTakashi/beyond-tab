@@ -4,5 +4,4 @@ export default [
   {
     value: "puts  Me.age",
   },
-
 ] as TerminalValue[];

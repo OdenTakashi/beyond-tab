@@ -4,5 +4,4 @@ export default [
   {
     value: "Object.send(:remove_const, :User)",
   },
-
 ] as TerminalValue[];

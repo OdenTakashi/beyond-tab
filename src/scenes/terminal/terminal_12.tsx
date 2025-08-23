@@ -4,5 +4,4 @@ export default [
   {
     value: "#=> 24",
   },
-
 ] as TerminalValue[];

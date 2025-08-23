@@ -4,5 +4,4 @@ export default [
   {
     value: "#=> 'やるぞぉ!'",
   },
-
 ] as TerminalValue[];

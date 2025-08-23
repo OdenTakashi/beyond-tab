@@ -4,5 +4,4 @@ export default [
   {
     value: "#=> nil",
   },
-
 ] as TerminalValue[];

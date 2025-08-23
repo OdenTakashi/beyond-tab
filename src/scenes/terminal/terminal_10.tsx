@@ -4,5 +4,4 @@ export default [
   {
     value: "travel_to(Time.current + 1.years)",
   },
-
 ] as TerminalValue[];
