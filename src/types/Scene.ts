@@ -1,5 +1,9 @@
+import type { ChatType } from "./Chat";
 import type { LineType } from "./LineValue";
 
 export type SceneType = {
-  lines: LineType[];
+  // 完全なスナップショット
+  editor: LineType[];
+  // 追加分だけ
+  ai?: ChatType[];
 };

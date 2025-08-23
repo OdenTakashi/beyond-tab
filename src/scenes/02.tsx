@@ -3,7 +3,7 @@ import { Token } from "../components/ide/Token";
 import type { SceneType } from "../types/Scene";
 
 export const scene02: SceneType = {
-  lines: [
+  editor: [
     {
       value: (
         <>
