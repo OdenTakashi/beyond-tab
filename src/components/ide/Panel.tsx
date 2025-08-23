@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { Colors } from "../../constants/Colors";
 import { SimpleTerminal } from "./SimpleTerminal";
+import type { SceneType } from "../../types/Scene";
 
 interface PanelTab {
   id: string;
@@ -22,6 +23,7 @@ const PANEL_TABS: PanelTab[] = [
 
 interface PanelProps {
   height?: number;
+  scene: SceneType;
   onHeightChange?: (height: number) => void;
   onResizeStateChange?: (isResizing: boolean) => void;
   isVisible?: boolean;
@@ -30,6 +32,7 @@ interface PanelProps {
 
 export const Panel = ({
   height = 200,
+  scene,
   onHeightChange,
   onResizeStateChange,
   isVisible = true,
@@ -187,7 +190,7 @@ export const Panel = ({
 
       {/* Content Area */}
       <div style={{ flex: 1, overflow: "hidden" }}>
-        <PanelContent activeTab={activeTab} />
+        <PanelContent activeTab={activeTab} scene={scene} />
       </div>
     </div>
   );
@@ -294,7 +297,7 @@ const TabControlButton = ({
   );
 };
 
-const PanelContent = ({ activeTab }: { activeTab: string }) => {
+const PanelContent = ({ activeTab, scene }: { activeTab: string; scene: SceneType }) => {
   const renderContent = () => {
     switch (activeTab) {
       case "problems":
@@ -318,7 +321,7 @@ const PanelContent = ({ activeTab }: { activeTab: string }) => {
           </div>
         );
       case "terminal":
-        return <SimpleTerminal />;
+        return <SimpleTerminal terminalValue={scene.terminal} />;
       case "ports":
         return (
           <div style={{ padding: "16px" }}>

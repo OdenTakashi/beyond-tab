@@ -1,6 +1,7 @@
 import { Tab } from "../components/ide/Tab";
 import { Token } from "../components/ide/Token";
 import type { SceneType } from "../types/Scene";
+import terminal01 from "./terminal_01";
 
 export const scene01: SceneType = {
   editor: [
@@ -118,4 +119,5 @@ export const scene01: SceneType = {
       timestamp: new Date("2024-03-20T10:02:30"),
     },
   ],
+  terminal: terminal01,
 };

@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { Colors } from "../../constants/Colors";
+import type { TerminalValue } from "../../types/TerminalValue";
 
 interface TerminalLine {
   id: number;
-  type: "command" | "output" | "error";
+  type: "command" | "output" | "error" | "oden";
   content: string;
   timestamp: Date;
 }
@@ -14,7 +15,7 @@ interface Command {
   handler: (args: string[]) => string[];
 }
 
-export const SimpleTerminal = () => {
+export const SimpleTerminal = ({ terminalValue }: { terminalValue?: TerminalValue[] }) => {
   const [lines, setLines] = useState<TerminalLine[]>([]);
   const [currentInput, setCurrentInput] = useState("");
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
@@ -287,6 +288,15 @@ export const SimpleTerminal = () => {
     setLineIdCounter(3);
   }, []);
 
+  // ターミナルの値を追加
+  useEffect(() => {
+    if (terminalValue) {
+      terminalValue.forEach(value => {
+        addLine("oden", value.value);
+      });
+    }
+  }, [terminalValue]);
+
   // 自動スクロール
   useEffect(() => {
     if (terminalRef.current) {
@@ -400,6 +410,8 @@ export const SimpleTerminal = () => {
         return Colors.ide.panel.textActive;
       case "error":
         return "#f14c4c";
+      case "oden":
+        return "#36f3a1";
       case "output":
       default:
         return Colors.ide.panel.text;
