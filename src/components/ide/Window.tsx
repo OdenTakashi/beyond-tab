@@ -14,7 +14,6 @@ export const IDEWindow = () => {
   const [selectedFiles, setSelectedFiles] = useState<string[]>([]);
 
   const handleFileSelect = (files: string[]) => {
-
     if (files.length === 1) {
       const fileName = files[0];
 

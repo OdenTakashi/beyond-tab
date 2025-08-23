@@ -9,7 +9,6 @@ export const FileExplorer = ({ onFileSelect }: FileExplorerProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleFileClick = (fileName: string) => {
-
     // 親コンポーネントにファイル選択を通知
     // 状態管理は親コンポーネント（Window）で行う
     if (onFileSelect) {

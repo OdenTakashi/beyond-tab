@@ -15,7 +15,6 @@ interface TabProps {
 }
 
 export const Tab = ({ selectedFiles = [], onTabClose }: TabProps) => {
-
   // selectedFilesが変更されたときにタブを更新
   const tabs = selectedFiles.map((fileName, index) => {
     const isActive = index === selectedFiles.length - 1; // 最後に選択されたファイルをアクティブにする
